@@ -21,7 +21,7 @@
             <!--Body content-->
             <ul class="breadcrumb">
                 <li><a href="#">系统管理</a></li>
-                <li><a href="<c:url value="/user/menu.do"/>">菜单管理</a></li>
+                <li><a href="<c:url value='/user/menu.do'/>">菜单管理</a></li>
                 <li class="active">菜单信息查看</li>
             </ul>
             <div class="col-md-6">

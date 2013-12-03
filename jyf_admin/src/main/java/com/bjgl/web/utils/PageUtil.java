@@ -15,7 +15,7 @@ public class PageUtil {
         if (pageBean.getPageCount() <= 0) {
             return "暂无分页！";
         }
-        StringBuffer buffer = new StringBuffer("<div class=\"pagination pagination-right\"><ul>");
+        StringBuffer buffer = new StringBuffer("<div><ul class=\"pagination\">");
         //String url = request.getRequestURI().toString();
 
         int page = pageBean.getPage();

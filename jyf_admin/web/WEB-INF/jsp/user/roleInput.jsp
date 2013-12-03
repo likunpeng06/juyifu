@@ -1,8 +1,8 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>角色信息录入 - ${SITE_NAME}</title>
@@ -15,21 +15,21 @@
 
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
 
-<ul class="breadcrumb">
-    <li><a href="#">系统管理</a> <span class="divider">/</span></li>
-    <li><a href="<c:url value="/user/role.do"/>">角色管理</a> <span class="divider">/</span></li>
-    <li class="active">角色信息录入</li>
-</ul>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
             <!--Sidebar content-->
             <jsp:include page="/WEB-INF/jsp/sidebar.jsp"/>
         </div>
-        <div class="span10">
+        <div class="col-md-10">
             <!--Body content-->
-            <form class="form-horizontal" action="<c:url value="/user/role.do"/>" method="post">
+            <ul class="breadcrumb">
+                <li><a href="#">系统管理</a></li>
+                <li><a href="<c:url value="/user/role.do"/>">角色管理</a></li>
+                <li class="active">角色信息录入</li>
+            </ul>
+            <form class="form-horizontal" role="form" action="<c:url value="/user/role.do"/>" method="post">
                 <input type="hidden" name="action" value="manage"/>
                 <s:if test="%{func == 'copy'}">
                     <input type="hidden" id="roleid" name="role.id" value=""/>
@@ -39,18 +39,18 @@
                 </s:else>
                 <input type="hidden" id="temp_role_id" name="roleId" value="${role.id}"/>
 
-                <div class="control-group">
-                    <label class="control-label" for="role.name">角色名称</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="role.name">角色名称</label>
 
-                    <div class="controls">
-                        <input type="text" id="role.name" placeholder="角色名称" name="role.name" value="${role.name}">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="role.name" placeholder="角色名称" name="role.name" value="${role.name}">
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="role.valid">是否有效</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="role.valid">是否有效</label>
 
-                    <div class="controls">
-                        <select id="role.valid" name="role.valid">
+                    <div class="col-md-2">
+                        <select id="role.valid" name="role.valid" class="form-control">
                             <c:choose>
                                 <c:when test="${!role.valid}">
                                     <option value="true">有效</option>
@@ -64,11 +64,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="role.restriction">是否限制IP</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="role.restriction">是否限制IP</label>
 
-                    <div class="controls">
-                        <select id="role.restriction" name="role.restriction">
+                    <div class="col-md-1">
+                        <select id="role.restriction" name="role.restriction" class="form-control">
                             <c:choose>
                                 <c:when test="${role.restriction}">
                                     <option value="false">否</option>
@@ -82,31 +82,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="role.restrictionIp">有效IP段</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="role.restrictionIp">有效IP段</label>
 
-                    <div class="controls">
-                        <textarea id="role.restrictionIp" name="role.restrictionIp">${role.restrictionIp}</textarea>
+                    <div class="col-md-3">
+                        <textarea id="role.restrictionIp" class="form-control" rows="3" name="role.restrictionIp">${role.restrictionIp}</textarea>
                         <br/>(格式：211.211.211.*,201.201.201.*)
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="role.memo">备注</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="role.memo">备注</label>
 
-                    <div class="controls">
-                        <textarea id="role.memo" name="role.memo">${role.memo}</textarea>
+                    <div class="col-md-3">
+                        <textarea id="role.memo" class="form-control" rows="3" name="role.memo">${role.memo}</textarea>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label">选择权限</label>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">选择权限</label>
 
-                    <div class="controls">
+                    <div class="col-md-3">
                         <ul id="permissionTreeView"></ul>
                     </div>
                 </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" class="btn">提交</button>
+                <div class="form-group">
+                    <div class="col-md-offset-3">
+                        <button type="submit" class="btn btn-primary">提交</button>
                     </div>
                 </div>
             </form>

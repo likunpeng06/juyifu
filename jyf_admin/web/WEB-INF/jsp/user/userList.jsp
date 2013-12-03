@@ -1,8 +1,8 @@
 <%@page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>角色管理 - ${SITE_NAME}</title>
@@ -17,28 +17,28 @@
 
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
 
-<ul class="breadcrumb">
-    <li><a href="#">系统管理</a> <span class="divider">/</span></li>
-    <li class="active">用户管理</li>
-</ul>
-
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
             <!--Sidebar content-->
             <jsp:include page="/WEB-INF/jsp/sidebar.jsp"/>
         </div>
-        <div class="span10">
+        <div class="col-md-10">
             <!--Body content-->
+            <ul class="breadcrumb">
+                <li><a href="#">系统管理</a></li>
+                <li class="active">用户管理</li>
+            </ul>
+
             <div class="btn-group table-btn-group">
-                <a class="btn btn-primary" href="<c:url value="/user/user.do?action=input"/>">添加用户</a>
+                <a class="btn btn-primary" href="<c:url value='/user/user.do?action=input'/>">添加用户</a>
             </div>
 
             <div class="alert alert-info">
                 条件查询
             </div>
 
-            <form class="form-inline" action="${ctx}/user/user.do" method="post">
+            <form class="form-inline" role="form" action="${ctx}/user/user.do" method="post">
                 <input type="hidden" value="query" name="action"/>
                 <table class="table table-bordered">
                     <tr>
@@ -87,7 +87,7 @@
                         </td>
                         <td>
                             <label>登录时间结束</label>
-                            <input type="text" id="endDate" name="endDate" size="10" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
+                            <input type="text" id="endDate" name="endDate" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
                             <input type="button" id="endDateTrigger" value="选择"/>
                         </td>
                     </tr>

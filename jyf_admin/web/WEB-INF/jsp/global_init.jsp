@@ -3,10 +3,16 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-    .accordion .accordion-inner {
-        padding-left: 50px;
+    /*.accordion .accordion-inner {*/
+        /*padding-left: 50px;*/
+    /*}*/
+    .container {
+        width: 100%;
+    }
+    .breadcrumb {
+        margin-bottom: 10px;
     }
     .table-btn-group {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 </style>

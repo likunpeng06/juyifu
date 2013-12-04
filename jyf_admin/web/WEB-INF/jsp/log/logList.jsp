@@ -39,47 +39,69 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>
-                            <label>用户名</label>
-                            <input type="text" placeholder="用户名" name="username" value="${username}"/>
+                            <div class="form-group">
+                                <label class="sr-only" for="username">用户名</label>
+                                <input type="text" class="form-control" id="username" placeholder="用户名" name="username" value="${username}"/>
+                            </div>
                         </td>
                         <td>
-                            <label>姓名</label>
-                            <input type="text" placeholder="姓名" name="name" value="${name}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>日志类型</label>
-                            <s:select name="logTypeId" list="logTypes" listKey="value"
-                                      listValue="name" headerKey="0" headerValue="全部"/>
-                        </td>
-                        <td>
-                            <label>链接</label>
-                            <input type="text" placeholder="链接" name="url" value="${url}" />
+                            <div class="form-group">
+                                <label class="sr-only" for="name">姓名</label>
+                                <input type="text" class="form-control" id="name" placeholder="姓名" name="name" value="${name}" />
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>action名称</label>
-                            <input type="text" placeholder="action名称" name="actionName" value="${actionName}" />
+                            <div class="form-group">
+                                <label class="sr-only" for="logTypeId">日志类型</label>
+                                <s:select name="logTypeId" list="logTypes" listKey="value"
+                                          listValue="name" headerKey="0" headerValue="全部" cssClass="form-control"/>
+                            </div>
                         </td>
                         <td>
-                            <label>参数</label>
-                            <input type="text" placeholder="参数" name="params" value="${params}" />
+                            <div class="form-group">
+                                <label class="sr-only" for="url">链接</label>
+                                <input type="text" class="form-control" id="url" placeholder="链接" name="url" value="${url}" />
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>ip</label>
-                            <input type="text" placeholder="ip" name="ip" value="${ip}" />
+                            <div class="form-group">
+                                <label class="sr-only" for="actionName">action名称</label>
+                                <input type="text" class="form-control" id="actionName" placeholder="action名称" name="actionName" value="${actionName}" />
+                            </div>
                         </td>
                         <td>
-                            <label>创建时间开始</label>
-                            <input type="text" id="beginDate" name="beginDate" value="<fmt:formatDate value='${beginDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
-                            <input type="button" id="beginDateTrigger" value="选择"/>
-                            <label>创建时间结束</label>
-                            <input type="text" id="endDate" name="endDate" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
-                            <input type="button" id="endDateTrigger" value="选择"/>
+                            <div class="form-group">
+                                <label class="sr-only" for="params">参数</label>
+                                <input type="text" class="form-control" id="params" placeholder="参数" name="params" value="${params}" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="sr-only" for="ip">ip</label>
+                                <input type="text" class="form-control" id="ip" placeholder="ip" name="ip" value="${ip}" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="sr-only" for="beginDate">创建时间开始</label>
+                                <input type="text" class="form-control" id="beginDate" placeholder="创建时间开始" name="beginDate" value="<fmt:formatDate value='${beginDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" id="beginDateTrigger" class="btn btn-default" value="选择"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="endDate">创建时间结束</label>
+                                <input type="text" class="form-control" id="endDate" placeholder="创建时间结束" name="endDate" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" id="endDateTrigger" class="btn btn-default" value="选择"/>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -138,7 +160,7 @@
                     ifFormat    : "%Y-%m-%d %H:%M:%S",   // the date format
                     button      : "beginDateTrigger",
                     showsTime   : true,
-                    date		: Calendar.initNewDate(),
+                    date		: Calendar.initNewDate('00:00:00'),
                     timeFormat  : "24"
                 }
         );
@@ -148,7 +170,7 @@
                     ifFormat    : "%Y-%m-%d %H:%M:%S",   // the date format
                     button      : "endDateTrigger",
                     showsTime   : true,
-                    date		: Calendar.initNewDate(),
+                    date		: Calendar.initNewDate('23:59:59'),
                     timeFormat  : "24"
                 }
         );

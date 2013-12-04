@@ -38,57 +38,74 @@
                 条件查询
             </div>
 
-            <form class="form-inline" role="form" action="${ctx}/user/user.do" method="post">
+            <form class="form-inline" role="form" action="<c:url value='/user/user.do'/>" method="post">
                 <input type="hidden" value="query" name="action"/>
                 <table class="table table-bordered">
                     <tr>
                         <td>
-                            <label>用户名</label>
-                            <input type="text" placeholder="用户名" name="username" value="${username}"/>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-username">用户名</label>
+                                <input type="text" class="form-control" placeholder="用户名" id="form-control-username" name="username" value="${username}"/>
+                            </div>
                         </td>
                         <td>
-                            <label>姓名</label>
-                            <input type="text" placeholder="姓名" name="name" value="${name}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>电话</label>
-                            <input type="text" placeholder="电话" name="phone" value="${phone}" />
-                        </td>
-                        <td>
-                            <label>是否有效</label>
-                            <select name="validValue">
-                                <c:choose>
-                                    <c:when test="${validValue == null || validValue < 0}">
-                                        <option value="-1">全部</option>
-                                        <option value="1">有效</option>
-                                        <option value="0">无效</option>
-                                    </c:when>
-                                    <c:when test="${validValue > 0}">
-                                        <option value="-1">全部</option>
-                                        <option value="1" selected="selected">有效</option>
-                                        <option value="0">无效</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="-1">全部</option>
-                                        <option value="1">有效</option>
-                                        <option value="0" selected="selected">无效</option>
-                                    </c:otherwise>
-                                </c:choose>
-                            </select>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-name">姓名</label>
+                                <input type="text" class="form-control" placeholder="姓名" id="form-control-name" name="name" value="${name}"/>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>登录时间开始</label>
-                            <input type="text" id="beginDate" name="beginDate" value="<fmt:formatDate value='${beginDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
-                            <input type="button" id="beginDateTrigger" value="选择"/>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-phone">电话</label>
+                                <input type="text" class="form-control" placeholder="电话" id="form-control-phone" name="phone" value="${phone}"/>
+                            </div>
                         </td>
                         <td>
-                            <label>登录时间结束</label>
-                            <input type="text" id="endDate" name="endDate" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
-                            <input type="button" id="endDateTrigger" value="选择"/>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-validValue">是否有效</label>
+                                <select class="form-control" id="form-control-validValue" name="validValue">
+                                    <c:choose>
+                                        <c:when test="${validValue == null || validValue < 0}">
+                                            <option value="-1">是否有效</option>
+                                            <option value="1">有效</option>
+                                            <option value="0">无效</option>
+                                        </c:when>
+                                        <c:when test="${validValue > 0}">
+                                            <option value="-1">是否有效</option>
+                                            <option value="1" selected="selected">有效</option>
+                                            <option value="0">无效</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="-1">是否有效</option>
+                                            <option value="1">有效</option>
+                                            <option value="0" selected="selected">无效</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </select>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-beginDate">登录时间开始</label>
+                                <input type="datetime" class="form-control" placeholder="登录时间开始" id="form-control-beginDate" name="beginDate" value="<fmt:formatDate value='${beginDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" id="beginDateTrigger">选择</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-control-endDate">登录时间结束</label>
+                                <input type="datetime" class="form-control" placeholder="登录时间结束" id="form-control-endDate" name="endDate" value="<fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd HH:mm:ss'/>"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" id="endDateTrigger">选择</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -148,21 +165,21 @@
     $(function(){
         Calendar.setup(
                 {
-                    inputField  : "beginDate",    // ID of the input field
+                    inputField  : "form-control-beginDate",    // ID of the input field
                     ifFormat    : "%Y-%m-%d %H:%M:%S",   // the date format
                     button      : "beginDateTrigger",
                     showsTime   : true,
-                    date		: Calendar.initNewDate(),
+                    date		: Calendar.initNewDate('00:00:00'),
                     timeFormat  : "24"
                 }
         );
         Calendar.setup(
                 {
-                    inputField  : "endDate",    // ID of the input field
+                    inputField  : "form-control-endDate",    // ID of the input field
                     ifFormat    : "%Y-%m-%d %H:%M:%S",   // the date format
                     button      : "endDateTrigger",
                     showsTime   : true,
-                    date		: Calendar.initNewDate(),
+                    date		: Calendar.initNewDate('23:59:59'),
                     timeFormat  : "24"
                 }
         );

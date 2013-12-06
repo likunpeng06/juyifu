@@ -5,7 +5,7 @@ import cn.mixpay.admin.entity.user.*;
 import cn.mixpay.admin.service.user.*;
 import cn.mixpay.admin.bean.TreeViewBean;
 import net.sf.json.JSONArray;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import java.util.*;

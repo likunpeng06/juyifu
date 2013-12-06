@@ -10,7 +10,7 @@ import cn.mixpay.admin.service.user.UserService;
 import cn.mixpay.admin.utils.PageUtils;
 import cn.mixpay.core.utils.CharsetConstant;
 import cn.mixpay.core.utils.CoreStringUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;

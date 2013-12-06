@@ -9,7 +9,7 @@ import cn.mixpay.admin.entity.user.User;
 import cn.mixpay.admin.entity.user.UserRole;
 import cn.mixpay.admin.service.user.*;
 import cn.mixpay.core.utils.CoreHttpUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;

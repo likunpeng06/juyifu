@@ -7,13 +7,13 @@
     <package name="default" extends="struts-default">
         <interceptors>
             <interceptor name="logInterceptor"
-                         class="com.bjgl.web.interceptor.LogInterceptor"/>
+                         class="cn.mixpay.admin.interceptor.LogInterceptor"/>
             <interceptor name="handleLogInterceptor"
-                         class="com.bjgl.web.interceptor.HandleLogInterceptor"/>
+                         class="cn.mixpay.admin.interceptor.HandleLogInterceptor"/>
             <interceptor name="userSessionInterceptor"
-                         class="com.bjgl.web.interceptor.UserSessionInterceptor"/>
+                         class="cn.mixpay.admin.interceptor.UserSessionInterceptor"/>
             <interceptor name="userPermissionInterceptor"
-                         class="com.bjgl.web.interceptor.UserPermissionInterceptor"/>
+                         class="cn.mixpay.admin.interceptor.UserPermissionInterceptor"/>
             <interceptor-stack name="userSessionStack">
                 <interceptor-ref name="completeStack"/>
                 <interceptor-ref name="logInterceptor"/>

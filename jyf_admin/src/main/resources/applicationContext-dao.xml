@@ -41,13 +41,13 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.bjgl.web.dao.impl.user.UserDaoImpl"/>
-    <bean id="roleDao" class="com.bjgl.web.dao.impl.user.RoleDaoImpl"/>
-    <bean id="menuDao" class="com.bjgl.web.dao.impl.user.MenuDaoImpl"/>
-    <bean id="permissionDao" class="com.bjgl.web.dao.impl.user.PermissionDaoImpl"/>
-    <bean id="permissionItemDao" class="com.bjgl.web.dao.impl.user.PermissionItemDaoImpl"/>
-    <bean id="rolePermissionDao" class="com.bjgl.web.dao.impl.user.RolePermissionDaoImpl"/>
-    <bean id="userRoleDao" class="com.bjgl.web.dao.impl.user.UserRoleDaoImpl"/>
-    <bean id="logDao" class="com.bjgl.web.dao.impl.log.LogDaoImpl"/>
+    <bean id="userDao" class="cn.mixpay.admin.dao.impl.user.UserDaoImpl"/>
+    <bean id="roleDao" class="cn.mixpay.admin.dao.impl.user.RoleDaoImpl"/>
+    <bean id="menuDao" class="cn.mixpay.admin.dao.impl.user.MenuDaoImpl"/>
+    <bean id="permissionDao" class="cn.mixpay.admin.dao.impl.user.PermissionDaoImpl"/>
+    <bean id="permissionItemDao" class="cn.mixpay.admin.dao.impl.user.PermissionItemDaoImpl"/>
+    <bean id="rolePermissionDao" class="cn.mixpay.admin.dao.impl.user.RolePermissionDaoImpl"/>
+    <bean id="userRoleDao" class="cn.mixpay.admin.dao.impl.user.UserRoleDaoImpl"/>
+    <bean id="logDao" class="cn.mixpay.admin.dao.impl.log.LogDaoImpl"/>
 
 </beans>

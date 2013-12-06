@@ -30,18 +30,18 @@
 
     <aop:config>
         <aop:pointcut id="interceptorPointCuts"
-                      expression="execution(* com.bjgl.web.service.impl.*.*(..)) or execution(* com.bjgl.web.service.impl.*.*.*(..))"/>
+                      expression="execution(* cn.mixpay.admin.service.impl.*.*(..)) or execution(* cn.mixpay.admin.service.impl.*.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="interceptorPointCuts"/>
     </aop:config>
 
-    <bean id="userService" class="com.bjgl.web.service.impl.user.UserServiceImpl" p:dao-ref="userDao"/>
-    <bean id="roleService" class="com.bjgl.web.service.impl.user.RoleServiceImpl" p:dao-ref="roleDao"/>
-    <bean id="userRoleService" class="com.bjgl.web.service.impl.user.UserRoleServiceImpl" p:dao-ref="userRoleDao"/>
-    <bean id="menuService" class="com.bjgl.web.service.impl.user.MenuServiceImpl" p:dao-ref="menuDao"/>
-    <bean id="rolePermissionService" class="com.bjgl.web.service.impl.user.RolePermissionServiceImpl" p:dao-ref="rolePermissionDao"/>
-    <bean id="permissionService" class="com.bjgl.web.service.impl.user.PermissionServiceImpl" p:dao-ref="permissionDao"/>
-    <bean id="permissionItemService" class="com.bjgl.web.service.impl.user.PermissionItemServiceImpl" p:dao-ref="permissionItemDao"/>
-    <bean id="logService" class="com.bjgl.web.service.impl.log.LogServiceImpl"/>
+    <bean id="userService" class="cn.mixpay.admin.service.impl.user.UserServiceImpl" p:dao-ref="userDao"/>
+    <bean id="roleService" class="cn.mixpay.admin.service.impl.user.RoleServiceImpl" p:dao-ref="roleDao"/>
+    <bean id="userRoleService" class="cn.mixpay.admin.service.impl.user.UserRoleServiceImpl" p:dao-ref="userRoleDao"/>
+    <bean id="menuService" class="cn.mixpay.admin.service.impl.user.MenuServiceImpl" p:dao-ref="menuDao"/>
+    <bean id="rolePermissionService" class="cn.mixpay.admin.service.impl.user.RolePermissionServiceImpl" p:dao-ref="rolePermissionDao"/>
+    <bean id="permissionService" class="cn.mixpay.admin.service.impl.user.PermissionServiceImpl" p:dao-ref="permissionDao"/>
+    <bean id="permissionItemService" class="cn.mixpay.admin.service.impl.user.PermissionItemServiceImpl" p:dao-ref="permissionItemDao"/>
+    <bean id="logService" class="cn.mixpay.admin.service.impl.log.LogServiceImpl"/>
 
 </beans>

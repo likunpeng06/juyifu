@@ -1,4 +1,5 @@
-CREATE TABLE `bjgl_log` (
+CREATE database jyf_admin DEFAULT CHARACTER SET=utf8;
+CREATE TABLE `mp_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -12,7 +13,7 @@ CREATE TABLE `bjgl_log` (
   KEY `idx_log_create` (`create_time`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_user` (
+CREATE TABLE `mp_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -30,7 +31,7 @@ CREATE TABLE `bjgl_user` (
   KEY `idx_valild` (`valid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_role` (
+CREATE TABLE `mp_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `valid` smallint(6) NOT NULL DEFAULT '1',
@@ -41,7 +42,7 @@ CREATE TABLE `bjgl_role` (
   KEY `idx_valid` (`valid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_user_role` (
+CREATE TABLE `mp_user_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `role_id` bigint(20) NOT NULL,
@@ -49,7 +50,7 @@ CREATE TABLE `bjgl_user_role` (
   UNIQUE KEY `uk_user_role` (`user_id`,`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_menu` (
+CREATE TABLE `mp_menu` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `url` varchar(512) DEFAULT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE `bjgl_menu` (
   KEY `idx_valid` (`valid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_permission` (
+CREATE TABLE `mp_permission` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `url` varchar(512) DEFAULT NULL,
@@ -80,7 +81,7 @@ CREATE TABLE `bjgl_permission` (
   KEY `idx_menu_item` (`menu_item`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_permission_item` (
+CREATE TABLE `mp_permission_item` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `permission_id` bigint(20) NOT NULL,
@@ -94,7 +95,7 @@ CREATE TABLE `bjgl_permission_item` (
   KEY `idx_valid` (`valid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `bjgl_role_permission` (
+CREATE TABLE `mp_role_permission` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) NOT NULL,
   `permission_id` bigint(20) NOT NULL,

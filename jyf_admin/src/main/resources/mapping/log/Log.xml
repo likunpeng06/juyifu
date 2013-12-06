@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.bjgl.web.entity.log">
-    <class name="Log" table="bjgl_log" dynamic-insert="true" dynamic-update="true">
+    <class name="cn.mixpay.admin.entity.log.Log" table="bjgl_log" dynamic-insert="true" dynamic-update="true">
         <id name="id">
             <generator class="native"></generator>
         </id>
@@ -12,9 +12,9 @@
         <property name="name"/>
         <property name="logType">
             <column name="log_type" precision="22" scale="0" not-null="true"/>
-            <type name="com.bjgl.web.hibernate.usertype.IntegerBeanLabelUserType">
+            <type name="cn.mixpay.admin.hibernate.usertype.IntegerBeanLabelUserType">
                 <param name="targetClass">
-                    com.bjgl.web.enums.LogType
+                    cn.mixpay.admin.enums.LogType
                 </param>
             </type>
         </property>

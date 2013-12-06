@@ -3,8 +3,8 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.bjgl.web.entity.user">
-	<class name="PermissionItem" table="bjgl_permission_item" dynamic-insert="true" dynamic-update="true">
+<hibernate-mapping package="cn.mixpay.admin.entity.user">
+	<class name="cn.mixpay.admin.entity.user.PermissionItem" table="mp_permission_item" dynamic-insert="true" dynamic-update="true">
         <id name="id">
             <generator class="native"></generator>
         </id>

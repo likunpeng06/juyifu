@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  * @function 分页
  * @since 2010-09-15
  */
-public class PageUtil {
+public class PageUtils {
 
     public static String getPageString(HttpServletRequest request, PageBean pageBean) {
         if (pageBean.getPageCount() <= 0) {

@@ -1,10 +1,10 @@
 /**
  * 
  */
-package cn.mixpay.admin.utils;
+package cn.mixpay.core.utils;
 
 /**
- * @author sunshow
+ * @author qatang
  *
  */
 public class CharsetConstant {

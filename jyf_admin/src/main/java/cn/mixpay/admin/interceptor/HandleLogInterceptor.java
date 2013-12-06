@@ -12,7 +12,7 @@ import cn.mixpay.admin.entity.log.Log;
 import cn.mixpay.admin.entity.user.PermissionItem;
 import cn.mixpay.admin.enums.LogType;
 import cn.mixpay.admin.service.log.LogService;
-import cn.mixpay.admin.utils.StringUtil;
+import cn.mixpay.core.utils.CoreStringUtils;
 import org.apache.struts2.StrutsStatics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,7 @@ public class HandleLogInterceptor extends AbstractInterceptor {
 				log.setUsername(userSessionBean.getUser().getUsername());
 				log.setName(userSessionBean.getUser().getName());
 			}
-			String message = StringUtil.getStringByActionHashMap(paramMap);
+			String message = CoreStringUtils.getStringByActionHashMap(paramMap);
 			if(message != null && message.length() >= 1000){
 				message = message.substring(0,900);
 			}

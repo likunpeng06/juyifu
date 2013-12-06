@@ -1,4 +1,24 @@
-package cn.mixpay.admin.utils;
+package cn.mixpay.core.utils;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -14,16 +34,8 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.*;
-
 /**
- * @author Sunshow
+ * @author qatang
  *
  */
 public class CoreHttpUtils {
@@ -397,6 +409,7 @@ public class CoreHttpUtils {
 	/**
 	 * @描述:解析key=value&key=value的键值
 	 * @param contents
+	 * @param encoding
 	 * @return
 	 */
 	public static Map<String, String> parseQueryString(String contents) {
@@ -569,7 +582,7 @@ public class CoreHttpUtils {
 	
 	/**
 	 * 和javascript的encodeURI效果相同的方法，用于encode完整的url
-	 * @param url
+	 * @param uri
 	 * @param encoding
 	 * @return
 	 */
@@ -619,5 +632,7 @@ public class CoreHttpUtils {
 		params.put("中文参数", "中文");
 		
 		System.out.println(getQueryString(params, "UTF-8"));
+		
+		System.out.println(encodeURI("http://a.dev.lehecai.cn/user/plan_prize_ranking.php?json={\"page\":1,\"pagesize\":10,\"where\":[{\"key\":\"lottery_type\",\"op\":\"=\",\"val\":[30,31,32,33,34]},{\"key\":\"ticket_print_time_start\",\"val\":\"2011-01-01 00:00:00\"},{\"key\":\"ticket_print_time_end\",\"val\":\"2011-09-01 23:59:59\"}]}", "UTF-8"));
 	}
 }

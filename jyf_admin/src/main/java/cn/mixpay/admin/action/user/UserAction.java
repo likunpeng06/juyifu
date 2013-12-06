@@ -5,11 +5,11 @@ import cn.mixpay.admin.entity.user.User;
 import cn.mixpay.admin.entity.user.UserRole;
 import cn.mixpay.admin.service.user.RoleService;
 import cn.mixpay.admin.service.user.UserRoleService;
-import cn.mixpay.admin.utils.CoreStringUtils;
 import cn.mixpay.admin.entity.user.Role;
 import cn.mixpay.admin.service.user.UserService;
-import cn.mixpay.admin.utils.CharsetConstant;
-import cn.mixpay.admin.utils.PageUtil;
+import cn.mixpay.admin.utils.PageUtils;
+import cn.mixpay.core.utils.CharsetConstant;
+import cn.mixpay.core.utils.CoreStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.Criterion;
@@ -85,7 +85,7 @@ public class UserAction extends BaseAction {
 
         userList = userService.findByExample(null, criterionList, this.getPageBean(), Order.asc("id"));
 
-        this.setPageString(PageUtil.getPageString(request, userService.getPageBean(null, criterionList, this.getPageBean())));
+        this.setPageString(PageUtils.getPageString(request, userService.getPageBean(null, criterionList, this.getPageBean())));
 
         logger.info("查询用户结束");
         return "list";

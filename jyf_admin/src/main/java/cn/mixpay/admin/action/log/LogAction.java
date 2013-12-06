@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import cn.mixpay.admin.utils.PageUtils;
 import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,6 @@ import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.entity.log.Log;
 import cn.mixpay.admin.enums.LogType;
 import cn.mixpay.admin.service.log.LogService;
-import cn.mixpay.admin.utils.PageUtil;
 
 public class LogAction extends BaseAction {
 	private static final long serialVersionUID = 2436161530465382824L;
@@ -48,7 +48,7 @@ public class LogAction extends BaseAction {
 
 		logs = logService.list(userName, name, beginDate, endDate, logTypeId, url, actionName, params, ip,super.getPageBean());
 		PageBean pageBean = logService.getPageBean(userName, name, beginDate, endDate, logTypeId, url, actionName, params, ip,super.getPageBean());
-		super.setPageString(PageUtil.getPageString(request, pageBean));
+		super.setPageString(PageUtils.getPageString(request, pageBean));
 		return "list";
 	}
 	

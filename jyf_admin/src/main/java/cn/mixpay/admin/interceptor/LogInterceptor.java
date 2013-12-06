@@ -7,8 +7,8 @@ import cn.mixpay.admin.entity.user.Permission;
 import cn.mixpay.admin.entity.user.PermissionItem;
 import cn.mixpay.admin.enums.LogType;
 import cn.mixpay.admin.service.log.LogService;
-import cn.mixpay.admin.utils.CoreHttpUtils;
-import cn.mixpay.admin.utils.StringUtil;
+import cn.mixpay.core.utils.CoreHttpUtils;
+import cn.mixpay.core.utils.CoreStringUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
@@ -62,7 +62,7 @@ public class LogInterceptor extends AbstractInterceptor {
 				log.setUsername(userSessionBean.getUser().getUsername());
 				log.setName(userSessionBean.getUser().getName());
 			}
-			String message = StringUtil.getStringByActionHashMap(paramMap);
+			String message = CoreStringUtils.getStringByActionHashMap(paramMap);
 			if(message != null && message.length() >= 1000){
 				message = message.substring(0,900);
 			}

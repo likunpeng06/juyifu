@@ -1,4 +1,4 @@
-package cn.mixpay.admin.utils;
+package cn.mixpay.core.utils;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -9,7 +9,6 @@ import java.nio.CharBuffer;
 import java.nio.charset.*;
 import java.security.MessageDigest;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.zip.DeflaterOutputStream;
@@ -17,20 +16,8 @@ import java.util.zip.InflaterOutputStream;
 
 public class CoreStringUtils {
 	
-	private static Map<String, CharsetDecoder> charsetDecoderMap = new HashMap<String, CharsetDecoder>();
-	
-	public static synchronized CharsetDecoder getCharsetDecoder(String charset) throws IllegalCharsetNameException, IllegalArgumentException, UnsupportedCharsetException {
-		if (charsetDecoderMap.containsKey(charset)) {
-			return charsetDecoderMap.get(charset);
-		}
-		Charset charsetObj = Charset.forName(charset);
-		CharsetDecoder decoder = charsetObj.newDecoder();
-		charsetDecoderMap.put(charset, decoder);
-		return decoder;
-	}
-	
 	public static String convertByteBuffer(ByteBuffer bb, String charset) throws IllegalCharsetNameException, IllegalArgumentException, UnsupportedCharsetException, CharacterCodingException {
-		CharsetDecoder decoder = getCharsetDecoder(charset);
+		CharsetDecoder decoder = Charset.forName(charset).newDecoder();
 		CharBuffer cb = decoder.decode(bb);
 		return cb.toString();
 	}
@@ -218,6 +205,20 @@ public class CoreStringUtils {
     	return d;
     }
     /**
+     * 判断字符串是否是null或者null字符串,用于api请求json后数据验证
+     * @param val
+     * @return
+     */
+    public static boolean isNull(String val){
+    	if(val == null){
+    		return true;
+    	}
+    	if(val.trim().equals("null")){
+    		return true;
+    	}
+    	return false;
+    }
+    /**
      * 去掉字符串中的所有空格、制表符、换行符等
      * @param str
      * @return
@@ -338,5 +339,115 @@ public class CoreStringUtils {
             }  
         }  
 		return buf;
+    }
+
+    public final static String getStringByActionHashMap(Map map) {
+        StringBuffer sb = new StringBuffer();
+        Iterator it = map.keySet().iterator();
+        while (it.hasNext()) {
+            Object key = it.next();
+            Object value = map.get(key);
+            if (value instanceof String[]) {
+                String[] values = (String[]) value;
+
+                StringBuffer subSb = new StringBuffer();
+                if (values != null) {
+                    for (int i = 0; i < values.length; i++) {
+                        subSb.append(values[i]).append("|");
+                    }
+                    if (subSb.length() > 0) {
+                        subSb.deleteCharAt(subSb.length() - 1);
+                    }
+                }
+                sb.append(key.toString()).append("=").append(subSb.toString()).append("&");
+            }
+
+        }
+        if (sb.length() > 0) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return sb.toString();
+    }
+
+    public static int getByteLength(String str) {
+        int lng = 0;
+        char[] tempChar = str.toCharArray();
+        for (int k = 0; k < tempChar.length; k++) {
+            String s = String.valueOf(tempChar[k]);
+            byte[] b = s.getBytes();
+            lng += b.length;
+        }
+        return lng;
+    }
+
+    /**
+     * 判断字符串是否为整数
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        if (str == null) {
+            return false;
+        }
+        if (str.matches("\\d*")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 判断是否包含有全角
+     */
+    public static boolean hasAngle(String str) {
+        if (str == null || str.equals("")) {
+            return false;
+        }
+
+        char[] array = str.toCharArray();
+        if (str.getBytes().length != array.length) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 全角转半角
+     */
+    public static String toHalfAngle(String str) {
+        if (str == null || str.equals("")) {
+            return null;
+        }
+
+        char[] array = str.toCharArray();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == '\u3000') {    //十六进制，相当于十进制的12288，即全角空格
+                array[i] = ' ';
+            } else if (array[i] > '\uFF00' && array[i] < '\uFF5F') { //其他字符半角与全角均相差65248
+                array[i] = (char) (array[i] - 65248);
+            }
+        }
+
+        return new String(array);
+    }
+
+    /**
+     * 半角转全角
+     */
+    public static String toAngle(String str) {
+        if (str == null || str.equals("")) {
+            return null;
+        }
+
+        char[] array = str.toCharArray();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 32) {
+                array[i] = (char) 12288;
+            } else if (array[i] < 127) {
+                array[i] = (char) (array[i] + 65248);
+            }
+        }
+        return new String(array);
     }
 }

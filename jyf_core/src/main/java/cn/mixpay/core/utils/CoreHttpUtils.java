@@ -409,7 +409,6 @@ public class CoreHttpUtils {
 	/**
 	 * @描述:解析key=value&key=value的键值
 	 * @param contents
-	 * @param encoding
 	 * @return
 	 */
 	public static Map<String, String> parseQueryString(String contents) {
@@ -582,7 +581,7 @@ public class CoreHttpUtils {
 	
 	/**
 	 * 和javascript的encodeURI效果相同的方法，用于encode完整的url
-	 * @param uri
+	 * @param url
 	 * @param encoding
 	 * @return
 	 */

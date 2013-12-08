@@ -9,11 +9,11 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum OsType {
-    ALL("全部", 0),
-    IOS("ios", 1),
-    ANDROID("android", 2),
-    WINDOWS("windows", 3),
-    MAC("mac", 4);
+    ALL("全部"),
+    IOS("ios"),
+    ANDROID("android"),
+    WINDOWS("windows"),
+    MAC("mac");
 
     private static Logger logger = LoggerFactory.getLogger(OsType.class);
 
@@ -38,11 +38,9 @@ public enum OsType {
     }
 
     private String name;
-    private int value;
 
-    private OsType(String name, int value){
+    private OsType(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
@@ -50,7 +48,7 @@ public enum OsType {
     }
 
     public int getValue(){
-        return value;
+        return this.ordinal();
     }
 
     public static OsType get(int value){

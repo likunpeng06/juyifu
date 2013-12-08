@@ -9,10 +9,10 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum OrderStatus {
-    ALL("全部", 0),
-    ALIVE("存活中", 1),
-    CLOSED("已关闭", 2),
-    TIMEOUT("已超时", 3);
+    ALL("全部"),
+    ALIVE("存活中"),
+    CLOSED("已关闭"),
+    TIMEOUT("已超时");
 
     private static Logger logger = LoggerFactory.getLogger(OrderStatus.class);
 
@@ -37,11 +37,9 @@ public enum OrderStatus {
     }
 
     private String name;
-    private int value;
 
-    private OrderStatus(String name, int value){
+    private OrderStatus(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
@@ -49,7 +47,7 @@ public enum OrderStatus {
     }
 
     public int getValue(){
-        return value;
+        return this.ordinal();
     }
 
     public static OrderStatus get(int value){

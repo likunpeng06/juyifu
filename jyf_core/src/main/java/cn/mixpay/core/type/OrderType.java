@@ -9,7 +9,7 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum OrderType {
-    ALL("全部", 0);
+    ALL("全部");
 
     private static Logger logger = LoggerFactory.getLogger(OrderType.class);
 
@@ -34,11 +34,9 @@ public enum OrderType {
     }
 
     private String name;
-    private int value;
 
-    private OrderType(String name, int value){
+    private OrderType(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
@@ -46,7 +44,7 @@ public enum OrderType {
     }
 
     public int getValue(){
-        return value;
+        return this.ordinal();
     }
 
     public static OrderType get(int value){

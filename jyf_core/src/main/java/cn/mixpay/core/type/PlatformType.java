@@ -9,8 +9,10 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum PlatformType {
-    ALL("全部", 0),
-    PLATFORM_ALIPAY("支付宝", 1);
+    ALL("全部"),
+    PLATFORM_ALIPAY("支付宝"),
+    PLATFORM_BAIDUPAY("百付宝"),
+    PLATFORM_UNIONPAY("银联支付");
 
     private static Logger logger = LoggerFactory.getLogger(PlatformType.class);
 
@@ -19,7 +21,7 @@ public enum PlatformType {
     private static List<PlatformType> _ALLLIST = new ArrayList<PlatformType>();
     static {
         for(PlatformType platformType : PlatformType.values()){
-            _MAP.put(platformType.getValue(), platformType);
+            _MAP.put(platformType.ordinal(), platformType);
             _ALLLIST.add(platformType);
             if (!platformType.equals(ALL)) {
                 _LIST.add(platformType);
@@ -35,24 +37,22 @@ public enum PlatformType {
     }
 
     private String name;
-    private int value;
 
-    private PlatformType(String name, int value){
+    private PlatformType(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
         return name;
     }
 
-    public int getValue(){
-        return value;
+    public int getValue() {
+        return this.ordinal();
     }
 
-    public static PlatformType get(int value){
+    public static PlatformType get(int ordinal){
         try{
-            return _MAP.get(value);
+            return _MAP.get(ordinal);
         }catch(Exception e){
             logger.error(e.getMessage(), e);
             return null;

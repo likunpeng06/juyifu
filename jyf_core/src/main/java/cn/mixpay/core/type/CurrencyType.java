@@ -9,9 +9,9 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum CurrencyType {
-    ALL("全部", 0),
-    RMB("人民币", 1),
-    DOLLAR("美元", 2);
+    ALL("全部"),
+    RMB("人民币"),
+    DOLLAR("美元");
 
     private static Logger logger = LoggerFactory.getLogger(CurrencyType.class);
 
@@ -36,11 +36,9 @@ public enum CurrencyType {
     }
 
     private String name;
-    private int value;
 
-    private CurrencyType(String name, int value){
+    private CurrencyType(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
@@ -48,7 +46,7 @@ public enum CurrencyType {
     }
 
     public int getValue(){
-        return value;
+        return this.ordinal();
     }
 
     public static CurrencyType get(int value){

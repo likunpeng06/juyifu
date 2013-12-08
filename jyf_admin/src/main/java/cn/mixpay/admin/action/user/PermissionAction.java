@@ -41,13 +41,17 @@ public class PermissionAction extends BaseAction {
 				super.setErrorMessage("权限action名称不能为空");
 				return "failure";
 			}
-			permissionService.update(permission);
+            if (permission.getId() == null) {
+                permissionService.save(permission);
+            } else {
+                permissionService.update(permission);
+            }
 		} else {
 			logger.error("更新权限错误，提交表单为空");
 			super.setErrorMessage("更新权限错误，提交的表单不能为空");
 			return "failure";
 		}
-		super.setForwardUrl("/user/permission.do?permission.menuID="+permission.getMenuId());
+		super.setForwardUrl("/user/permission.do?permission.menuId="+permission.getMenuId());
 		logger.info("更新权限结束");
 		return "success";
 	}

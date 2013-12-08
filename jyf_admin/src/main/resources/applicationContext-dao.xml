@@ -29,6 +29,7 @@
                 <value>mapping/user/RolePermission.xml</value>
                 <value>mapping/user/UserRole.xml</value>
                 <value>mapping/log/Log.xml</value>
+                <value>mapping/PayPlatformConfig.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,5 +50,7 @@
     <bean id="rolePermissionDao" class="cn.mixpay.admin.dao.impl.user.RolePermissionDaoImpl"/>
     <bean id="userRoleDao" class="cn.mixpay.admin.dao.impl.user.UserRoleDaoImpl"/>
     <bean id="logDao" class="cn.mixpay.admin.dao.impl.log.LogDaoImpl"/>
+
+    <bean id="payPlatformConfigDao" class="cn.mixpay.admin.dao.impl.business.PayPlatformConfigDaoImpl"/>
 
 </beans>

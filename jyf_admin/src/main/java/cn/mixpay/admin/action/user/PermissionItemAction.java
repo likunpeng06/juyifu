@@ -41,13 +41,18 @@ public class PermissionItemAction extends BaseAction {
 				super.setErrorMessage("权限action名称不能为空");
 				return "failure";
 			}
-            permissionItemService.update(permissionItem);
+
+            if (permissionItem.getId() ==  null) {
+                permissionItemService.save(permissionItem);
+            } else {
+                permissionItemService.update(permissionItem);
+            }
 		} else {
 			logger.error("添加权限错误，提交表单不能为空");
 			super.setErrorMessage("添加权限错误，提交表单不能为空");
 			return "failure";
 		}
-		super.setForwardUrl("/user/permissionItem.do?permissionItem.permissionID="+permissionItem.getPermissionId());
+		super.setForwardUrl("/user/permissionItem.do?permissionItem.permissionId="+permissionItem.getPermissionId());
 		logger.info("更新子权限结束");
 		return "success";
 	}

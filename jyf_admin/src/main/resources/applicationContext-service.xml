@@ -44,4 +44,6 @@
     <bean id="permissionItemService" class="cn.mixpay.admin.service.impl.user.PermissionItemServiceImpl" p:dao-ref="permissionItemDao"/>
     <bean id="logService" class="cn.mixpay.admin.service.impl.log.LogServiceImpl"/>
 
+    <bean id="payPlatformConfigService" class="cn.mixpay.admin.service.impl.business.PayPlatformConfigServiceImpl" p:dao-ref="payPlatformConfigDao"/>
+
 </beans>

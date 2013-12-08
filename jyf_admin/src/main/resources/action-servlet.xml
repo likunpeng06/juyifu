@@ -15,4 +15,6 @@
     <bean id="permissionAction" class="cn.mixpay.admin.action.user.PermissionAction" scope="prototype"/>
     <bean id="permissionItemAction" class="cn.mixpay.admin.action.user.PermissionItemAction" scope="prototype"/>
     <bean id="logAction" class="cn.mixpay.admin.action.log.LogAction" scope="prototype"/>
+
+    <bean id="payPlatformConfigAction" class="cn.mixpay.admin.action.business.PayPlatformConfigAction" scope="prototype"/>
 </beans>

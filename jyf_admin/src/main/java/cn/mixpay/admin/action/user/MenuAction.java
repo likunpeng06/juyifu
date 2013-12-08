@@ -29,7 +29,11 @@ public class MenuAction extends BaseAction {
 				super.setErrorMessage("菜单名称不能为空");
 				return "failure";
 			}
-            menuService.update(menu);
+            if (menu.getId() == null) {
+                menuService.save(menu);
+            } else {
+                menuService.update(menu);
+            }
 		} else {
 			logger.error("更新菜单错误，提交表单为空");
 			super.setErrorMessage("更新菜单错误，提交表单不能为空");

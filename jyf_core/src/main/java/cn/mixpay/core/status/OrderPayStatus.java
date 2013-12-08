@@ -9,10 +9,10 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum OrderPayStatus {
-    ALL("全部", 0),
-    UNPAY("未支付", 1),
-    PAY_SUCCESS("支付成功", 2),
-    PAY_FAILURE("支付失败", 3);
+    ALL("全部"),
+    UNPAY("未支付"),
+    PAY_SUCCESS("支付成功"),
+    PAY_FAILURE("支付失败");
 
     private static Logger logger = LoggerFactory.getLogger(OrderPayStatus.class);
 
@@ -37,19 +37,17 @@ public enum OrderPayStatus {
     }
 
     private String name;
-    private int value;
 
-    private OrderPayStatus(String name, int value){
+    private OrderPayStatus(String name){
         this.name = name;
-        this.value = value;
     }
 
     public String getName(){
         return name;
     }
 
-    public int getValue(){
-        return value;
+    public int getValue() {
+        return this.ordinal();
     }
 
     public static OrderPayStatus get(int value){

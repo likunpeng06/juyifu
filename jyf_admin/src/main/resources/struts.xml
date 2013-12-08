@@ -103,4 +103,12 @@
         </action>
     </package>
 
+    <package name="business" extends="default" namespace="/business">
+        <action name="payPlatformConfig" class="payPlatformConfigAction">
+            <interceptor-ref name="userSessionStack"/>
+            <result name="list">/WEB-INF/jsp/business/payPlatformConfigList.jsp</result>
+            <result name="view">/WEB-INF/jsp/business/payPlatformConfigView.jsp</result>
+        </action>
+    </package>
+
 </struts>

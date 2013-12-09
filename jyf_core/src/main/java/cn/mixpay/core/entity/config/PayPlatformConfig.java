@@ -1,4 +1,4 @@
-package cn.mixpay.core.entity;
+package cn.mixpay.core.entity.config;
 
 import cn.mixpay.core.status.EnableDisableStatus;
 import cn.mixpay.core.type.PayType;
@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
 /**
+ * 支付方式对应支付平台配置
  * Created by qatang on 13-12-7.
  */
 public class PayPlatformConfig implements Serializable {

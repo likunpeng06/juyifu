@@ -1,4 +1,4 @@
-package cn.mixpay.core.entity;
+package cn.mixpay.core.entity.order;
 
 import cn.mixpay.core.status.OrderPayStatus;
 import cn.mixpay.core.status.OrderStatus;
@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 支付订单
  * Created by qatang on 13-12-6.
  */
 public class PayOrder implements Serializable {

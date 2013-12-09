@@ -1,8 +1,7 @@
 package cn.mixpay.admin.dao.business;
 
 import cn.mixpay.admin.dao.BaseDao;
-import cn.mixpay.admin.entity.user.User;
-import cn.mixpay.core.entity.PayPlatformConfig;
+import cn.mixpay.core.entity.config.PayPlatformConfig;
 /**
  * User: qatang
  * Date: 13-12-7

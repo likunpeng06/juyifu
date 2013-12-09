@@ -1,71 +1,56 @@
 package cn.mixpay.admin.action.business;
 
 import cn.mixpay.admin.action.BaseAction;
-import cn.mixpay.admin.entity.user.Role;
-import cn.mixpay.admin.entity.user.User;
-import cn.mixpay.admin.entity.user.UserRole;
 import cn.mixpay.admin.service.business.PayPlatformConfigService;
-import cn.mixpay.admin.service.user.RoleService;
-import cn.mixpay.admin.service.user.UserRoleService;
-import cn.mixpay.admin.service.user.UserService;
-import cn.mixpay.admin.utils.PageUtils;
-import cn.mixpay.core.entity.PayPlatformConfig;
+import cn.mixpay.core.entity.config.PayPlatformConfig;
 import cn.mixpay.core.status.EnableDisableStatus;
 import cn.mixpay.core.type.PayType;
 import cn.mixpay.core.type.PlatformType;
-import cn.mixpay.core.utils.CharsetConstant;
-import cn.mixpay.core.utils.CoreStringUtils;
 import com.opensymphony.xwork2.Action;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class PayPlatformConfigAction extends BaseAction {
 
     private PayPlatformConfigService payPlatformConfigService;
 
-    private Integer platformTypeId;
-    private PlatformType platformType;
+    private Integer payTypeId;
+    private PayType payType;
     private PayPlatformConfig payPlatformConfig;
 
     private List<PayPlatformConfig> payPlatformConfigList;
-    private List<PayType> payTypeList;
-    private List<Integer> payTypeValueList;
+    private List<PlatformType> platformTypeList;
+    private List<Integer> platformTypeValueList;
 
     public String handle() {
         return "list";
     }
 
     public String view() {
-        platformType = PlatformType.get(platformTypeId);
+        payType = PayType.get(payTypeId);
 
         PayPlatformConfig payPlatformConfig = new PayPlatformConfig();
-        payPlatformConfig.setPlatformType(platformType);
+        payPlatformConfig.setPayType(payType);
         payPlatformConfigList = payPlatformConfigService.findByExample(payPlatformConfig, null);
 
-        List<PayType> tmpPayTypeList = new ArrayList<PayType>();
-        for (PayType payType : PayType.list()) {
+        List<PlatformType> tmpPlatformTypeList = new ArrayList<PlatformType>();
+        for (PlatformType platformType : PlatformType.list()) {
             boolean flag = false;
             for (PayPlatformConfig config : payPlatformConfigList) {
-                if (payType.equals(config.getPayType())) {
+                if (platformType.equals(config.getPlatformType())) {
                     flag = true;
                     break;
                 }
             }
             if (!flag) {
-                tmpPayTypeList.add(payType);
+                tmpPlatformTypeList.add(platformType);
             }
         }
-        payTypeList = tmpPayTypeList;
+        platformTypeList = tmpPlatformTypeList;
         return "view";
     }
 
@@ -74,13 +59,15 @@ public class PayPlatformConfigAction extends BaseAction {
             for (PayPlatformConfig config : payPlatformConfigList) {
                 payPlatformConfigService.delete(config.getId());
             }
-        } else {
-            for (Integer payTypeValue : payTypeValueList) {
-                PayType payType = PayType.get(payTypeValue);
+        }
+
+        if (platformTypeValueList != null && platformTypeValueList.size() > 0) {
+            for (Integer platformTypeValue : platformTypeValueList) {
+                PlatformType platformType = PlatformType.get(platformTypeValue);
                 PayPlatformConfig config = new PayPlatformConfig();
-                platformType = PlatformType.get(platformTypeId);
-                config.setPlatformType(platformType);
+                payType = PayType.get(payTypeId);
                 config.setPayType(payType);
+                config.setPlatformType(platformType);
                 config.setStatus(EnableDisableStatus.ENABLE);
                 payPlatformConfigService.save(config);
             }
@@ -113,8 +100,8 @@ public class PayPlatformConfigAction extends BaseAction {
         return EnableDisableStatus.DISABLE;
     }
 
-    public List<PlatformType> getPlatformTypeList() {
-        return PlatformType.list();
+    public List<PayType> getPayTypeList() {
+        return PayType.list();
     }
 
     public PayPlatformConfigService getPayPlatformConfigService() {
@@ -125,22 +112,6 @@ public class PayPlatformConfigAction extends BaseAction {
         this.payPlatformConfigService = payPlatformConfigService;
     }
 
-    public Integer getPlatformTypeId() {
-        return platformTypeId;
-    }
-
-    public void setPlatformTypeId(Integer platformTypeId) {
-        this.platformTypeId = platformTypeId;
-    }
-
-    public PlatformType getPlatformType() {
-        return platformType;
-    }
-
-    public void setPlatformType(PlatformType platformType) {
-        this.platformType = platformType;
-    }
-
     public List<PayPlatformConfig> getPayPlatformConfigList() {
         return payPlatformConfigList;
     }
@@ -149,27 +120,43 @@ public class PayPlatformConfigAction extends BaseAction {
         this.payPlatformConfigList = payPlatformConfigList;
     }
 
-    public List<PayType> getPayTypeList() {
-        return payTypeList;
-    }
-
-    public void setPayTypeList(List<PayType> payTypeList) {
-        this.payTypeList = payTypeList;
-    }
-
-    public List<Integer> getPayTypeValueList() {
-        return payTypeValueList;
-    }
-
-    public void setPayTypeValueList(List<Integer> payTypeValueList) {
-        this.payTypeValueList = payTypeValueList;
-    }
-
     public PayPlatformConfig getPayPlatformConfig() {
         return payPlatformConfig;
     }
 
     public void setPayPlatformConfig(PayPlatformConfig payPlatformConfig) {
         this.payPlatformConfig = payPlatformConfig;
+    }
+
+    public Integer getPayTypeId() {
+        return payTypeId;
+    }
+
+    public void setPayTypeId(Integer payTypeId) {
+        this.payTypeId = payTypeId;
+    }
+
+    public PayType getPayType() {
+        return payType;
+    }
+
+    public void setPayType(PayType payType) {
+        this.payType = payType;
+    }
+
+    public List<PlatformType> getPlatformTypeList() {
+        return platformTypeList;
+    }
+
+    public void setPlatformTypeList(List<PlatformType> platformTypeList) {
+        this.platformTypeList = platformTypeList;
+    }
+
+    public List<Integer> getPlatformTypeValueList() {
+        return platformTypeValueList;
+    }
+
+    public void setPlatformTypeValueList(List<Integer> platformTypeValueList) {
+        this.platformTypeValueList = platformTypeValueList;
     }
 }

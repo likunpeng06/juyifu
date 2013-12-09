@@ -23,7 +23,7 @@
             $('#config_batch_action').click(function() {
                 var $checked = $('input[type=checkbox][name=config_chk_box]:checked');
                 if ($checked.length == 0) {
-                    alert("请先选择要操作的支付方式");
+                    alert("请先选择要操作的配置");
                     return;
                 }
                 var batchForm = $('#batchForm');
@@ -37,14 +37,14 @@
             $('#batch_action').click(function() {
                 var $checked = $('input[type=checkbox][name=chk_box]:checked');
                 if ($checked.length == 0) {
-                    alert("请先选择要操作的支付方式");
+                    alert("请先选择要操作的支付平台");
                     return;
                 }
                 var batchForm = $('#batchForm');
                 $checked.each(function(i) {
                     var id = $(this).val();
-                    var pay_type = $('#pay_type_' + id).val();
-                    batchForm.append('<input type="hidden" name="payTypeValueList[' + i + ']" value="' + pay_type + '" />');
+                    var platform_type = $('#platform_type_' + id).val();
+                    batchForm.append('<input type="hidden" name="platformTypeValueList[' + i + ']" value="' + platform_type + '" />');
                 });
                 batchForm.submit();
             });
@@ -85,12 +85,12 @@
 
             <form class="form-horizontal" role="form" id="batchForm" action="<c:url value="/business/payPlatformConfig.do"/>" method="post">
             <input type="hidden" name="action" value="manage"/>
-            <input type="hidden" name="platformTypeId" value="${platformTypeId}"/>
+            <input type="hidden" name="payTypeId" value="${payTypeId}"/>
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            ${platformType.name} 已配置支付方式
+                            ${platformType.name} 已配置支付平台
                             <div class="btn-group btn-group-xs col-md-offset-6">
                                 <a class="btn btn-default" id="config_batch_action" href="javascript://">删除所选配置</a>
                             </div>
@@ -100,7 +100,7 @@
                             <tr>
                                 <th><input type="checkbox" id="config_check_all" />全选</th>
                                 <th>#</th>
-                                <td>名称</td>
+                                <td>支付平台</td>
                                 <td>操作</td>
                             </tr>
                             </thead>
@@ -111,8 +111,8 @@
                                         <input type="checkbox" name="config_chk_box" value="${index.count - 1}"/>
                                         <input type="hidden" id="config_id_${index.count - 1}" value="${id}"/>
                                     </td>
-                                    <td>${payType.value}</td>
-                                    <td>${payType.name}</td>
+                                    <td>${platformType.value}</td>
+                                    <td>${platformType.name}</td>
                                     <td>
                                         <a href="javascript://" onclick="optStatus(this, ${id})">
                                         <s:if test="status.value == enableStatus.value">
@@ -133,7 +133,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            未配置支付方式
+                            未配置支付平台
                             <div class="btn-group btn-group-xs col-md-offset-6">
                                 <a class="btn btn-default" id="batch_action" href="javascript://">添加所选配置</a>
                             </div>
@@ -147,11 +147,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <s:iterator value="payTypeList" status="index">
+                            <s:iterator value="platformTypeList" status="index">
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="chk_box" value="${index.count - 1}"/>
-                                        <input type="hidden" id="pay_type_${index.count - 1}" value="${value}"/>
+                                        <input type="hidden" id="platform_type_${index.count - 1}" value="${value}"/>
                                     </td>
                                     <td>${value}</td>
                                     <td>${name}</td>

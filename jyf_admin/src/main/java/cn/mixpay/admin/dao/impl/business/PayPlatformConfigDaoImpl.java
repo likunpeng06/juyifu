@@ -2,11 +2,7 @@ package cn.mixpay.admin.dao.impl.business;
 
 import cn.mixpay.admin.dao.business.PayPlatformConfigDao;
 import cn.mixpay.admin.dao.impl.AbstractBaseDaoImpl;
-import cn.mixpay.admin.dao.user.UserDao;
-import cn.mixpay.admin.entity.user.User;
-import cn.mixpay.core.entity.PayPlatformConfig;
-
-import java.util.List;
+import cn.mixpay.core.entity.config.PayPlatformConfig;
 
 /**
  * User: qatang

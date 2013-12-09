@@ -30,16 +30,16 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <td>名称</td>
+                    <td>支付方式</td>
                     <td>操作</td>
                 </tr>
                 </thead>
                 <tbody>
-                <s:iterator value="platformTypeList">
+                <s:iterator value="payTypeList">
                     <tr>
                         <td>${value}</td>
                         <td>${name}</td>
-                        <td><a href="<c:url value="/business/payPlatformConfig.do?action=view&platformTypeId=${value}"/>">配置</a></td>
+                        <td><a href="<c:url value="/business/payPlatformConfig.do?action=view&payTypeId=${value}"/>">配置</a></td>
                     </tr>
                 </s:iterator>
                 </tbody>

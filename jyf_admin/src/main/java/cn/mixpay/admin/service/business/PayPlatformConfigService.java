@@ -1,11 +1,7 @@
 package cn.mixpay.admin.service.business;
 
-import cn.mixpay.admin.entity.user.User;
-import cn.mixpay.admin.entity.user.UserRole;
 import cn.mixpay.admin.service.BaseService;
-import cn.mixpay.core.entity.PayPlatformConfig;
-
-import java.util.List;
+import cn.mixpay.core.entity.config.PayPlatformConfig;
 
 /**
  * User: qatang

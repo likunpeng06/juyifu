@@ -45,5 +45,7 @@
     <bean id="logService" class="cn.mixpay.admin.service.impl.log.LogServiceImpl"/>
 
     <bean id="payPlatformConfigService" class="cn.mixpay.admin.service.impl.business.PayPlatformConfigServiceImpl" p:dao-ref="payPlatformConfigDao"/>
+    <bean id="merchantService" class="cn.mixpay.admin.service.impl.merchant.MerchantServiceImpl" p:dao-ref="merchantDao"/>
+    <bean id="merchantAppService" class="cn.mixpay.admin.service.impl.merchant.MerchantAppServiceImpl" p:dao-ref="merchantAppDao"/>
 
 </beans>

@@ -1,12 +1,13 @@
 package cn.mixpay.admin.action.user;
 
-import java.util.List;
-
 import cn.mixpay.admin.action.BaseAction;
+import cn.mixpay.admin.bean.MenuPermissionBean;
+import cn.mixpay.admin.entity.user.Permission;
 import cn.mixpay.admin.entity.user.PermissionItem;
 import cn.mixpay.admin.service.user.PermissionItemService;
-import cn.mixpay.admin.entity.user.Permission;
 import cn.mixpay.admin.service.user.PermissionService;
+
+import java.util.List;
 
 public class PermissionItemAction extends BaseAction {
 	private static final long serialVersionUID = 2436161530465382824L;
@@ -18,6 +19,7 @@ public class PermissionItemAction extends BaseAction {
 	private Permission permission;
 	
 	private List<PermissionItem> permissionItems;
+    private MenuPermissionBean menuPermissionBean;
 	
 	public String handle() {
 		logger.info("进入查询子权限列表");
@@ -47,6 +49,7 @@ public class PermissionItemAction extends BaseAction {
             } else {
                 permissionItemService.update(permissionItem);
             }
+            menuPermissionBean.init();
 		} else {
 			logger.error("添加权限错误，提交表单不能为空");
 			super.setErrorMessage("添加权限错误，提交表单不能为空");
@@ -87,6 +90,7 @@ public class PermissionItemAction extends BaseAction {
 		logger.info("进入删除子权限");
 		if (permissionItem != null && permissionItem.getId() != null) {
             permissionItemService.delete(permissionItem.getId());
+            menuPermissionBean.init();
 		} else {
 			logger.error("删除子权限，编码为空");
 			super.setErrorMessage("删除子权限，编码不能为空");
@@ -131,5 +135,9 @@ public class PermissionItemAction extends BaseAction {
 
     public void setPermissionItemService(PermissionItemService permissionItemService) {
         this.permissionItemService = permissionItemService;
+    }
+
+    public void setMenuPermissionBean(MenuPermissionBean menuPermissionBean) {
+        this.menuPermissionBean = menuPermissionBean;
     }
 }

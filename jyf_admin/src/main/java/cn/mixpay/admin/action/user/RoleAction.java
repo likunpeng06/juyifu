@@ -76,16 +76,16 @@ public class RoleAction extends BaseAction {
                 if (permissionItemIdList != null) {
                     Set<Long> permissionItemIdSet = permissionIdAndPermissionItemIdSetMap.get(permissionId);
 
-                    List<Long> idList = new ArrayList<Long>();
-                    for (Long permissionItemId : permissionItemIdList) {
-                        if (permissionItemIdSet.contains(permissionItemId)) {
-                            idList.add(permissionItemId);
+                    if (permissionItemIdSet != null && permissionItemIdSet.size() > 0) {
+                        List<Long> idList = new ArrayList<Long>();
+                        for (Long permissionItemId : permissionItemIdList) {
+                            if (permissionItemIdSet.contains(permissionItemId)) {
+                                idList.add(permissionItemId);
+                            }
                         }
+                        rolePermission.setPermissionItemIds(StringUtils.join(idList, ","));
                     }
-
-                    rolePermission.setPermissionItemIds(StringUtils.join(idList, ","));
                 }
-
                 rolePermissionList.add(rolePermission);
             }
         }

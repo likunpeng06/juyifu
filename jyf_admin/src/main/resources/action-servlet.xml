@@ -17,4 +17,6 @@
     <bean id="logAction" class="cn.mixpay.admin.action.log.LogAction" scope="prototype"/>
 
     <bean id="payPlatformConfigAction" class="cn.mixpay.admin.action.business.PayPlatformConfigAction" scope="prototype"/>
+    <bean id="merchantAction" class="cn.mixpay.admin.action.merchant.MerchantAction" scope="prototype"/>
+    <bean id="merchantAppAction" class="cn.mixpay.admin.action.merchant.MerchantAppAction" scope="prototype"/>
 </beans>

@@ -30,6 +30,8 @@
                 <value>mapping/user/UserRole.xml</value>
                 <value>mapping/log/Log.xml</value>
                 <value>mapping/PayPlatformConfig.xml</value>
+                <value>mapping/Merchant.xml</value>
+                <value>mapping/MerchantApp.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -52,5 +54,7 @@
     <bean id="logDao" class="cn.mixpay.admin.dao.impl.log.LogDaoImpl"/>
 
     <bean id="payPlatformConfigDao" class="cn.mixpay.admin.dao.impl.business.PayPlatformConfigDaoImpl"/>
+    <bean id="merchantDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantDaoImpl"/>
+    <bean id="merchantAppDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantAppDaoImpl"/>
 
 </beans>

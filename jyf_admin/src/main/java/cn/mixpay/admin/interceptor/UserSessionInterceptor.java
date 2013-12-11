@@ -1,9 +1,9 @@
 package cn.mixpay.admin.interceptor;
 
-import cn.mixpay.admin.bean.UserSessionBean;
 import cn.mixpay.admin.action.BaseAction;
 import cn.mixpay.admin.bean.MenuBean;
 import cn.mixpay.admin.bean.MenuPermissionBean;
+import cn.mixpay.admin.bean.UserSessionBean;
 import cn.mixpay.admin.constant.Global;
 import cn.mixpay.admin.entity.user.Menu;
 import cn.mixpay.admin.entity.user.Permission;
@@ -30,8 +30,8 @@ public class UserSessionInterceptor extends AbstractInterceptor {
         UserSessionBean userSessionBean = (UserSessionBean) ac.getSession().get(Global.USER_SESSION);
 
         if (userSessionBean == null) {
-            BaseAction basetion = (BaseAction) invocation.getAction();
-            basetion.setErrorMessage("您的session丢失，请重新登录");
+            BaseAction baseAction = (BaseAction) invocation.getAction();
+            baseAction.setErrorMessage("您的session丢失，请重新登录");
             return "index";
         }
 

@@ -111,4 +111,21 @@
         </action>
     </package>
 
+    <package name="merchant" extends="default" namespace="/merchant">
+        <action name="merchant" class="merchantAction">
+            <interceptor-ref name="userSessionStack"/>
+            <result name="list">/WEB-INF/jsp/merchant/merchantList.jsp</result>
+            <result name="inputForm">/WEB-INF/jsp/merchant/merchantInput.jsp</result>
+            <result name="view">/WEB-INF/jsp/merchant/merchantView.jsp</result>
+            <result name="forward" type="redirect">${forwardUrl}</result>
+        </action>
+        <action name="merchantApp" class="merchantAppAction">
+            <interceptor-ref name="userSessionStack"/>
+            <result name="list">/WEB-INF/jsp/merchant/merchantAppList.jsp</result>
+            <result name="inputForm">/WEB-INF/jsp/merchant/merchantAppInput.jsp</result>
+            <result name="view">/WEB-INF/jsp/merchant/merchantAppView.jsp</result>
+            <result name="forward" type="redirect">${forwardUrl}</result>
+        </action>
+    </package>
+
 </struts>

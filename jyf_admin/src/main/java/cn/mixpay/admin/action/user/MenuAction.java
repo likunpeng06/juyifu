@@ -1,6 +1,7 @@
 package cn.mixpay.admin.action.user;
 
 import cn.mixpay.admin.action.BaseAction;
+import cn.mixpay.admin.bean.MenuPermissionBean;
 import cn.mixpay.admin.entity.user.Menu;
 import cn.mixpay.admin.service.user.MenuService;
 
@@ -14,7 +15,8 @@ public class MenuAction extends BaseAction {
 	private Menu menu;
 	
 	private List<Menu> menuList;
-	
+    private MenuPermissionBean menuPermissionBean;
+
 	public String handle(){
 		logger.info("进入查询菜单列表");
         menuList = menuService.findByExample(menu, null);
@@ -34,6 +36,7 @@ public class MenuAction extends BaseAction {
             } else {
                 menuService.update(menu);
             }
+            menuPermissionBean.init();
 		} else {
 			logger.error("更新菜单错误，提交表单为空");
 			super.setErrorMessage("更新菜单错误，提交表单不能为空");
@@ -75,6 +78,7 @@ public class MenuAction extends BaseAction {
 		logger.info("进入删除菜单");
 		if (menu != null && menu.getId() != null) {
 			menuService.delete(menu.getId());
+            menuPermissionBean.init();
 		} else {
 			logger.error("删除菜单，编码为空");
 			super.setErrorMessage("删除菜单，编码不能为空");
@@ -103,5 +107,9 @@ public class MenuAction extends BaseAction {
 
     public void setMenuService(MenuService menuService) {
         this.menuService = menuService;
+    }
+
+    public void setMenuPermissionBean(MenuPermissionBean menuPermissionBean) {
+        this.menuPermissionBean = menuPermissionBean;
     }
 }

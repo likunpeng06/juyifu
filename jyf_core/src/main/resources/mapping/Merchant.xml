@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.mixpay.core.entity.merchant">
+    <class name="Merchant" table="mp_merchant" dynamic-insert="true" dynamic-update="true">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="username" column="username" not-null="true" unique="true"/>
+        <property name="password" not-null="true"/>
+        <property name="name" not-null="true"/>
+        <property name="legalPerson" column="legal_person"/>
+        <property name="idCard" column="id_card"/>
+        <property name="address"/>
+        <property name="businessLicense" column="business_license"/>
+        <property name="mobile"/>
+        <property name="tel"/>
+        <property name="fax"/>
+        <property name="email"/>
+        <property name="status">
+            <column name="status" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.status.EnableDisableStatus
+                </param>
+            </type>
+        </property>
+        <property name="publicKey" column="public_key"/>
+        <property name="privateKey" column="private_key"/>
+        <property name="createdTime" column="created_time" not-null="true" update="false"/>
+        <property name="updatedTime" column="updated_time" not-null="true"/>
+        <property name="memo"/>
+    </class>
+</hibernate-mapping>

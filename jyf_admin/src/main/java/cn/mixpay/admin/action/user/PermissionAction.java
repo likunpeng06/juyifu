@@ -3,6 +3,7 @@ package cn.mixpay.admin.action.user;
 import java.util.List;
 
 import cn.mixpay.admin.action.BaseAction;
+import cn.mixpay.admin.bean.MenuPermissionBean;
 import cn.mixpay.admin.entity.user.Menu;
 import cn.mixpay.admin.entity.user.Permission;
 import cn.mixpay.admin.service.user.MenuService;
@@ -18,6 +19,7 @@ public class PermissionAction extends BaseAction {
 	private Menu menu;
 	
 	private List<Permission> permissionList;
+    private MenuPermissionBean menuPermissionBean;
 	
 	public String handle(){
 		logger.info("进入查询权限列表");
@@ -46,6 +48,7 @@ public class PermissionAction extends BaseAction {
             } else {
                 permissionService.update(permission);
             }
+            menuPermissionBean.init();
 		} else {
 			logger.error("更新权限错误，提交表单为空");
 			super.setErrorMessage("更新权限错误，提交的表单不能为空");
@@ -86,6 +89,7 @@ public class PermissionAction extends BaseAction {
 		logger.info("进入删除权限");
 		if (permission != null && permission.getId() != null) {
 			permissionService.delete(permission.getId());
+            menuPermissionBean.init();
 		} else {
 			logger.error("删除权限，编码为空");
 			super.setErrorMessage("删除权限，编码不能为空");
@@ -131,5 +135,9 @@ public class PermissionAction extends BaseAction {
 
     public void setMenuService(MenuService menuService) {
         this.menuService = menuService;
+    }
+
+    public void setMenuPermissionBean(MenuPermissionBean menuPermissionBean) {
+        this.menuPermissionBean = menuPermissionBean;
     }
 }

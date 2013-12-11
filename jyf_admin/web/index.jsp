@@ -40,9 +40,10 @@
     </style>
     <script type="text/javascript">
         var verifyCodeUrl = "/kaptcha?";
+        $('#verifyImg').prop('src',verifyCodeUrl + (new Date()).getTime());
         $(function() {
             $('#verifyImg').click(function () {
-                $(this).attr('src', verifyCodeUrl + (new Date()).getTime());
+                $(this).prop('src', verifyCodeUrl + (new Date()).getTime());
             }).trigger('click');
         });
     </script>
@@ -82,7 +83,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-10">
-                <img class="verify-code img-thumbnail" id="verifyImg" src="<c:url value='kaptcha'/>" title="看不清？点击图片刷新"/>
+                <img class="verify-code img-thumbnail" id="verifyImg" title="看不清？点击图片刷新"/>
             </div>
         </div>
         <div class="form-group">

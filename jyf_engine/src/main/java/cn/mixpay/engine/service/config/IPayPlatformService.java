@@ -6,6 +6,7 @@ import cn.mixpay.core.type.PlatformType;
 import java.util.List;
 
 /**
+ * 支付方式与支付平台相关数据接口
  * Created by qatang on 13-12-10.
  */
 public interface IPayPlatformService {

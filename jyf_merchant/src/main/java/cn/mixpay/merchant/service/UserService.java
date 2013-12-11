@@ -3,6 +3,7 @@ package cn.mixpay.merchant.service;
 import cn.mixpay.core.entity.merchant.Merchant;
 
 /**
+ * 商户基本信息管理接口
  * Created by qatang on 13-12-10.
  */
 public interface UserService {

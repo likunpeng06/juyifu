@@ -6,6 +6,7 @@ import cn.mixpay.engine.form.order.PayOrderForm;
 import java.util.List;
 
 /**
+ * 订单创建查询接口
  * Created by qatang on 13-12-10.
  */
 public interface IPayOrderService {

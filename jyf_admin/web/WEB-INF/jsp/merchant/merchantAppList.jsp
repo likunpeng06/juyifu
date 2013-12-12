@@ -53,7 +53,7 @@
                         <td>${status.name}</td>
                         <td><a href="<c:url value="/merchant/merchantApp.do?action=input&merchantApp.id=${id}"/>">修改</a></td>
                         <td><a href="<c:url value="/merchant/merchantApp.do?action=del&merchantApp.id=${id}"/>" onclick="return confirm('确实要删除吗？');">删除</a></td>
-                        <td><a href="<c:url value="/merchant/merchantAppPayMode.do?merchantAppPayMode.merchantAppId=${id}"/>">支付方式管理</a></td>
+                        <td><a href="<c:url value="/merchant/merchantAppPayMode.do?merchantApp.id=${id}"/>">支付方式管理</a></td>
                     </tr>
                 </s:iterator>
                 </tbody>

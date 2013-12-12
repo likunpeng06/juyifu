@@ -126,6 +126,17 @@
             <result name="view">/WEB-INF/jsp/merchant/merchantAppView.jsp</result>
             <result name="forward" type="redirect">${forwardUrl}</result>
         </action>
+        <action name="merchantSelectablePayMode" class="merchantSelectablePayModeAction">
+            <interceptor-ref name="userSessionStack"/>
+            <result name="list">/WEB-INF/jsp/merchant/merchantSelectablePayModeList.jsp</result>
+            <result name="view">/WEB-INF/jsp/merchant/merchantSelectablePayModeView.jsp</result>
+            <result name="forward" type="redirect">${forwardUrl}</result>
+        </action>
+        <action name="merchantAppPayMode" class="merchantAppPayModeAction">
+        <interceptor-ref name="userSessionStack"/>
+        <result name="view">/WEB-INF/jsp/merchant/merchantAppPayModeView.jsp</result>
+        <result name="forward" type="redirect">${forwardUrl}</result>
+    </action>
     </package>
 
 </struts>

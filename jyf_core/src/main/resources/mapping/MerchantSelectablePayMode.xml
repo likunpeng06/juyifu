@@ -4,23 +4,26 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="cn.mixpay.core.entity.merchant">
-    <class name="MerchantApp" table="mp_merchant_app" dynamic-insert="true" dynamic-update="true">
+    <class name="MerchantSelectablePayMode" table="mp_merchant_selectable_pay_mode" dynamic-insert="true" dynamic-update="true">
         <id name="id">
             <generator class="native"></generator>
         </id>
         <property name="merchantId" column="merchant_id" not-null="true"/>
-        <property name="name" not-null="true"/>
+        <property name="payType">
+            <column name="pay_type" precision="22" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.PayType
+                </param>
+            </type>
+        </property>
         <property name="status">
-            <column name="status" precision="4" scale="0" not-null="true" />
+            <column name="status" precision="22" scale="0" not-null="true" />
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">
                     cn.mixpay.core.status.EnableDisableStatus
                 </param>
             </type>
         </property>
-        <property name="publicKey" column="public_key"/>
-        <property name="privateKey" column="private_key"/>
-        <property name="createdTime" column="created_time" not-null="true" update="false"/>
-        <property name="updatedTime" column="updated_time" not-null="true"/>
     </class>
 </hibernate-mapping>

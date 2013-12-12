@@ -32,6 +32,8 @@
                 <value>mapping/PayPlatformConfig.xml</value>
                 <value>mapping/Merchant.xml</value>
                 <value>mapping/MerchantApp.xml</value>
+                <value>mapping/MerchantSelectablePayMode.xml</value>
+                <value>mapping/MerchantAppPayMode.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -56,5 +58,7 @@
     <bean id="payPlatformConfigDao" class="cn.mixpay.admin.dao.impl.business.PayPlatformConfigDaoImpl"/>
     <bean id="merchantDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantDaoImpl"/>
     <bean id="merchantAppDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantAppDaoImpl"/>
+    <bean id="merchantSelectablePayModeDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantSelectablePayModeDaoImpl"/>
+    <bean id="merchantAppPayModeDao" class="cn.mixpay.admin.dao.impl.merchant.MerchantAppPayModeDaoImpl"/>
 
 </beans>

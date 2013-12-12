@@ -47,5 +47,7 @@
     <bean id="payPlatformConfigService" class="cn.mixpay.admin.service.impl.business.PayPlatformConfigServiceImpl" p:dao-ref="payPlatformConfigDao"/>
     <bean id="merchantService" class="cn.mixpay.admin.service.impl.merchant.MerchantServiceImpl" p:dao-ref="merchantDao"/>
     <bean id="merchantAppService" class="cn.mixpay.admin.service.impl.merchant.MerchantAppServiceImpl" p:dao-ref="merchantAppDao"/>
+    <bean id="merchantSelectablePayModeService" class="cn.mixpay.admin.service.impl.merchant.MerchantSelectablePayModeServiceImpl" p:dao-ref="merchantSelectablePayModeDao"/>
+    <bean id="merchantAppPayModeService" class="cn.mixpay.admin.service.impl.merchant.MerchantAppPayModeServiceImpl" p:dao-ref="merchantAppPayModeDao"/>
 
 </beans>

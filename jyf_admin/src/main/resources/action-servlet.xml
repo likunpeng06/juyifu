@@ -21,4 +21,5 @@
     <bean id="merchantAppAction" class="cn.mixpay.admin.action.merchant.MerchantAppAction" scope="prototype"/>
     <bean id="merchantSelectablePayModeAction" class="cn.mixpay.admin.action.merchant.MerchantSelectablePayModeAction" scope="prototype"/>
     <bean id="merchantAppPayModeAction" class="cn.mixpay.admin.action.merchant.MerchantAppPayModeAction" scope="prototype"/>
+    <bean id="merchantSelectablePayPlatformAction" class="cn.mixpay.admin.action.merchant.MerchantSelectablePayPlatformAction" scope="prototype"/>
 </beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.mixpay.core.entity.merchant">
+    <class name="MerchantSelectablePayPlatform" table="mp_merchant_selectable_pay_platform" dynamic-insert="true" dynamic-update="true">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="payModeId" column="pay_mode_id" not-null="true"/>
+        <property name="platformType">
+            <column name="platform_type" precision="22" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.PlatformType
+                </param>
+            </type>
+        </property>
+        <property name="status">
+            <column name="status" precision="22" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.status.EnableDisableStatus
+                </param>
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>商户可选支付管理 - ${SITE_NAME}</title>
+    <title>商户可选支付对应支付平台管理 - ${SITE_NAME}</title>
     <jsp:include page="/WEB-INF/jsp/global_init.jsp"/>
     <script type="text/javascript">
         $(function(){
@@ -30,21 +30,21 @@
                 $checked.each(function(i) {
                     var id = $(this).val();
                     var config_id = $('#config_id_' + id).val();
-                    configBatchForm.append('<input type="hidden" name="merchantSelectablePayModeList[' + i + '].id" value="' + config_id + '" />');
+                    configBatchForm.append('<input type="hidden" name="merchantSelectablePayPlatformList[' + i + '].id" value="' + config_id + '" />');
                 });
                 configBatchForm.submit();
             });
             $('#batch_action').click(function() {
                 var $checked = $('input[type=checkbox][name=chk_box]:checked');
                 if ($checked.length == 0) {
-                    alert("请先选择要操作的支付方式");
+                    alert("请先选择要操作的支付平台");
                     return;
                 }
                 var batchForm = $('#batchForm');
                 $checked.each(function(i) {
                     var id = $(this).val();
-                    var pay_type = $('#pay_type_' + id).val();
-                    batchForm.append('<input type="hidden" name="payTypeValueList[' + i + ']" value="' + pay_type + '" />');
+                    var platform_type = $('#platform_type_' + id).val();
+                    batchForm.append('<input type="hidden" name="platformTypeValueList[' + i + ']" value="' + platform_type + '" />');
                 });
                 batchForm.submit();
             });
@@ -52,8 +52,8 @@
 
         function optStatus(obj, config_id) {
             $.ajax({
-                url:"<c:url value="/merchant/merchantSelectablePayMode.do"/>",
-                data:{action:"optStatus","merchantSelectablePayMode.id":config_id},
+                url:"<c:url value="/merchant/merchantSelectablePayPlatform.do"/>",
+                data:{action:"optStatus","merchantSelectablePayPlatform.id":config_id},
                 type:"post",
                 dataType:"json",
                 success:function(data){
@@ -79,14 +79,14 @@
             <!--Body content-->
             <ul class="breadcrumb">
                 <li><a href="#">商户管理</a></li>
-                <li><a href="<c:url value='/merchant/merchantSelectablePayMode.do' />">商户可选支付管理</a></li>
-                <li class="active">商户可选支付配置</li>
+                <li><a href="<c:url value='/merchant/merchantSelectablePayPlatform.do' />">商户可选支付方式对应支付平台管理</a></li>
+                <li class="active">商户可选支付方式对应支付平台配置</li>
             </ul>
 
             <div class="row">
-                <form class="form-horizontal" role="form" id="configBatchForm" action="<c:url value="/merchant/merchantSelectablePayMode.do"/>" method="post">
+                <form class="form-horizontal" role="form" id="configBatchForm" action="<c:url value="/merchant/merchantSelectablePayPlatform.do"/>" method="post">
                 <input type="hidden" name="action" value="manageMode"/>
-                <input type="hidden" name="merchant.id" value="${merchant.id}"/>
+                <input type="hidden" name="merchantSelectablePayMode.id" value="${merchantSelectablePayMode.id}"/>
                 <div class="col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -101,18 +101,18 @@
                                 <th><input type="checkbox" id="config_check_all" />全选</th>
                                 <th>#</th>
                                 <td>支付方式</td>
-                                <td colspan="2">操作</td>
+                                <td>操作</td>
                             </tr>
                             </thead>
                             <tbody>
-                            <s:iterator value="merchantSelectablePayModeList" status="index">
+                            <s:iterator value="merchantSelectablePayPlatformList" status="index">
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="config_chk_box" value="${index.count - 1}"/>
                                         <input type="hidden" id="config_id_${index.count - 1}" value="${id}"/>
                                     </td>
-                                    <td>${payType.value}</td>
-                                    <td>${payType.name}</td>
+                                    <td>${platformType.value}</td>
+                                    <td>${platformType.name}</td>
                                     <td>
                                         <a href="javascript://" onclick="optStatus(this, ${id})">
                                         <s:if test="status.value == enableStatus.value">
@@ -123,7 +123,6 @@
                                         </s:else>
                                         </a>
                                     </td>
-                                    <td><a href="<c:url value="/merchant/merchantSelectablePayPlatform.do?merchantSelectablePayMode.id=${id}"/>">支付平台管理</a></td>
                                 </tr>
                             </s:iterator>
                             </tbody>
@@ -132,9 +131,9 @@
                 </div>
                 </form>
 
-                <form class="form-horizontal" role="form" id="batchForm" action="<c:url value="/merchant/merchantSelectablePayMode.do"/>" method="post">
+                <form class="form-horizontal" role="form" id="batchForm" action="<c:url value="/merchant/merchantSelectablePayPlatform.do"/>" method="post">
                 <input type="hidden" name="action" value="manageType"/>
-                <input type="hidden" name="merchant.id" value="${merchant.id}"/>
+                <input type="hidden" name="merchantSelectablePayMode.id" value="${merchantSelectablePayMode.id}"/>
                 <div class="col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -152,11 +151,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <s:iterator value="payTypeList" status="index">
+                            <s:iterator value="platformTypeList" status="index">
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="chk_box" value="${index.count - 1}"/>
-                                        <input type="hidden" id="pay_type_${index.count - 1}" value="${value}"/>
+                                        <input type="hidden" id="platform_type_${index.count - 1}" value="${value}"/>
                                     </td>
                                     <td>${value}</td>
                                     <td>${name}</td>

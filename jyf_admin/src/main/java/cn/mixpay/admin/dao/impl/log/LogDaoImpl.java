@@ -3,13 +3,13 @@ package cn.mixpay.admin.dao.impl.log;
 import java.util.Date;
 import java.util.List;
 
+import cn.mixpay.core.utils.PageBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.dao.log.LogDao;
 import cn.mixpay.admin.entity.log.Log;
 import cn.mixpay.admin.enums.LogType;

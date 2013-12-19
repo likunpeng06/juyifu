@@ -45,7 +45,7 @@ public class LoginAction extends BaseAction {
 
         if (verifyCode == null || !verifyCode.equalsIgnoreCase(kaptchaExpected))
         {
-            logger.error("verifyCode={} ,kaptchaExpected={}", new String[]{verifyCode, kaptchaExpected});
+            logger.error("verifyCode={} ,kaptchaExpected={}", new Object[]{verifyCode, kaptchaExpected});
             this.errorForward(INDEX, "验证码错误");
         }
 

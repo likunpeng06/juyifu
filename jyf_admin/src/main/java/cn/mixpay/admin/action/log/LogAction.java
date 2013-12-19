@@ -6,12 +6,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import cn.mixpay.admin.utils.PageUtils;
+import cn.mixpay.core.utils.PageBean;
 import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.mixpay.admin.action.BaseAction;
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.entity.log.Log;
 import cn.mixpay.admin.enums.LogType;
 import cn.mixpay.admin.service.log.LogService;

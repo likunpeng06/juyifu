@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.mixpay.core.entity.order">
+    <class name="PayOrder" table="mp_pay_order" dynamic-insert="true" dynamic-update="true">
+        <id name="id">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="merchantId" column="merchant_id" not-null="true"/>
+        <property name="merchantAppId" column="merchant_app_id" not-null="true"/>
+        <property name="payType">
+            <column name="pay_type" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.PayType
+                </param>
+            </type>
+        </property>
+        <property name="platform">
+            <column name="platform" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.PlatformType
+                </param>
+            </type>
+        </property>
+        <property name="externalOrderId" column="external_order_id"/>
+        <property name="orderPayStatus">
+            <column name="order_pay_status" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.status.OrderPayStatus
+                </param>
+            </type>
+        </property>
+        <property name="orderType">
+            <column name="order_type" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.OrderType
+                </param>
+            </type>
+        </property>
+        <property name="orderStatus">
+            <column name="order_status" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.status.OrderStatus
+                </param>
+            </type>
+        </property>
+        <property name="createdTime" column="created_time" not-null="true" update="false"/>
+        <property name="updatedTime" column="updated_time" not-null="true"/>
+        <property name="deadline" column="deadline" not-null="true"/>
+        <property name="payTime" column="pay_time"/>
+        <property name="sourceId" column="source_id"/>
+        <property name="checksum" column="checksum"/>
+        <property name="amount" column="amount" not-null="true"/>
+        <property name="currency">
+            <column name="currentcy" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.CurrencyType
+                </param>
+            </type>
+        </property>
+        <property name="productId" column="product_id"/>
+        <property name="productName" column="product_name"/>
+        <property name="externalExt" column="external_ext"/>
+        <property name="osType">
+            <column name="os_type" precision="4" scale="0" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.OsType
+                </param>
+            </type>
+        </property>
+        <property name="osVersion" column="os_version"/>
+        <property name="remoteIp" column="remote_ip"/>
+        <property name="memo"/>
+    </class>
+</hibernate-mapping>

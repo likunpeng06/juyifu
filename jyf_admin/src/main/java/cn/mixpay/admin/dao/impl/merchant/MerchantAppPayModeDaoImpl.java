@@ -1,17 +1,11 @@
 package cn.mixpay.admin.dao.impl.merchant;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.dao.impl.AbstractBaseDaoImpl;
 import cn.mixpay.admin.dao.merchant.MerchantAppPayModeDao;
-import cn.mixpay.admin.dao.merchant.MerchantSelectablePayModeDao;
 import cn.mixpay.core.entity.merchant.MerchantAppPayMode;
-import cn.mixpay.core.entity.merchant.MerchantSelectablePayMode;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import java.io.Serializable;

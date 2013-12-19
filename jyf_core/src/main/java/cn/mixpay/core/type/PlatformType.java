@@ -15,6 +15,7 @@ public enum PlatformType {
     PLATFORM_UNIONPAY("银联支付");
 
     private static Logger logger = LoggerFactory.getLogger(PlatformType.class);
+    private final static String VERSION = "1.0";
 
     private static final Map<Integer, PlatformType> _MAP = new HashMap<Integer, PlatformType>();
     private static List<PlatformType> _LIST = new ArrayList<PlatformType>();
@@ -48,6 +49,10 @@ public enum PlatformType {
 
     public int getValue() {
         return this.ordinal();
+    }
+
+    public static String getVersion() {
+        return VERSION;
     }
 
     public static PlatformType get(int ordinal){

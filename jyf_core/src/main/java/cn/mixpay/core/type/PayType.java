@@ -18,6 +18,7 @@ public enum PayType {
     PHONE_PRE_PAID_CARD("电话充值卡");
 
     private static Logger logger = LoggerFactory.getLogger(PayType.class);
+    private final static String VERSION = "1.0";
 
     private static final Map<Integer, PayType> _MAP = new HashMap<Integer, PayType>();
     private static List<PayType> _LIST = new ArrayList<PayType>();
@@ -51,6 +52,10 @@ public enum PayType {
 
     public int getValue() {
         return this.ordinal();
+    }
+
+    public static String getVersion() {
+        return VERSION;
     }
 
     public static PayType get(int ordinal){

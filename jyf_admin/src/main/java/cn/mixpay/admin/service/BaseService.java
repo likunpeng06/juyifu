@@ -1,6 +1,6 @@
 package cn.mixpay.admin.service;
 
-import cn.mixpay.admin.bean.PageBean;
+import cn.mixpay.core.utils.PageBean;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 

@@ -9,7 +9,8 @@ import java.util.*;
  * Created by qatang on 13-12-6.
  */
 public enum OrderType {
-    ALL("全部");
+    ALL("全部"),
+    COMMON("普通订单");
 
     private static Logger logger = LoggerFactory.getLogger(OrderType.class);
 

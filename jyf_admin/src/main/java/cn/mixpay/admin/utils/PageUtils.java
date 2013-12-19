@@ -1,6 +1,6 @@
 package cn.mixpay.admin.utils;
 
-import cn.mixpay.admin.bean.PageBean;
+import cn.mixpay.core.utils.PageBean;
 
 import javax.servlet.http.HttpServletRequest;
 

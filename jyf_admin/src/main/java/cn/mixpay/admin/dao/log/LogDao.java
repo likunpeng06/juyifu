@@ -3,8 +3,8 @@ package cn.mixpay.admin.dao.log;
 import java.util.Date;
 import java.util.List;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.entity.log.Log;
+import cn.mixpay.core.utils.PageBean;
 
 public interface LogDao {
 	List<Log> list(String userName,String name,Date beginDate,Date endDate,Long logType, String url, String actionName, String params, String ip, PageBean pageBean);

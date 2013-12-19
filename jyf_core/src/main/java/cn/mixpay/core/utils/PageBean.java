@@ -1,4 +1,4 @@
-package cn.mixpay.admin.bean;
+package cn.mixpay.core.utils;
 
 import java.io.Serializable;
 

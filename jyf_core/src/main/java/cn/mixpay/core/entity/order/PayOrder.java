@@ -14,6 +14,7 @@ import java.util.Date;
 public class PayOrder implements Serializable {
     private Long id;
     private Long merchantId;
+    private Long merchantAppId;
     private PayType payType;
     private PlatformType platform;
     private String externalOrderId;
@@ -32,7 +33,6 @@ public class PayOrder implements Serializable {
     private String productName;
     private String externalExt;
     private OsType osType;
-    private String osName;
     private String osVersion;
     private String remoteIp;
     private String memo;
@@ -43,14 +43,6 @@ public class PayOrder implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(Long merchantId) {
-        this.merchantId = merchantId;
     }
 
     public PayType getPayType() {
@@ -197,14 +189,6 @@ public class PayOrder implements Serializable {
         this.osType = osType;
     }
 
-    public String getOsName() {
-        return osName;
-    }
-
-    public void setOsName(String osName) {
-        this.osName = osName;
-    }
-
     public String getOsVersion() {
         return osVersion;
     }
@@ -227,5 +211,21 @@ public class PayOrder implements Serializable {
 
     public void setMemo(String memo) {
         this.memo = memo;
+    }
+
+    public Long getMerchantAppId() {
+        return merchantAppId;
+    }
+
+    public void setMerchantAppId(Long merchantAppId) {
+        this.merchantAppId = merchantAppId;
+    }
+
+    public Long getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Long merchantId) {
+        this.merchantId = merchantId;
     }
 }

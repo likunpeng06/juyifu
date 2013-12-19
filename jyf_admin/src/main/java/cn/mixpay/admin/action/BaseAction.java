@@ -1,9 +1,9 @@
 package cn.mixpay.admin.action;
 
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.exception.ParameterValidateException;
 import cn.mixpay.admin.exception.StrutsRequestException;
+import cn.mixpay.core.utils.PageBean;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;

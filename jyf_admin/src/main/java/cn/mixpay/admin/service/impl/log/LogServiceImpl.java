@@ -3,10 +3,10 @@ package cn.mixpay.admin.service.impl.log;
 import java.util.Date;
 import java.util.List;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.dao.log.LogDao;
 import cn.mixpay.admin.entity.log.Log;
 import cn.mixpay.admin.service.log.LogService;
+import cn.mixpay.core.utils.PageBean;
 
 
 public class LogServiceImpl implements LogService {

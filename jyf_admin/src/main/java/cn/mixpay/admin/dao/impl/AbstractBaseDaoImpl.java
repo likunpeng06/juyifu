@@ -1,7 +1,7 @@
 package cn.mixpay.admin.dao.impl;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.dao.BaseDao;
+import cn.mixpay.core.utils.PageBean;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

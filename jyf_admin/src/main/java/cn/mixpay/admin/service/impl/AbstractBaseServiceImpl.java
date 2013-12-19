@@ -1,8 +1,8 @@
 package cn.mixpay.admin.service.impl;
 
-import cn.mixpay.admin.bean.PageBean;
 import cn.mixpay.admin.dao.BaseDao;
 import cn.mixpay.admin.service.BaseService;
+import cn.mixpay.core.utils.PageBean;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 

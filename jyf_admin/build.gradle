@@ -1,0 +1,59 @@
+group = 'mixpay'
+version = '0.0.1'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+repositories {
+  mavenCentral()
+  
+  maven {
+    url '/root/.m2/repository'
+  }  
+}
+
+dependencies {
+  compile "mixpay:jyf_core:0.0.1+" 
+
+  compile("org.slf4j:jcl-over-slf4j:1.7.5")
+  compile("ch.qos.logback:logback-classic:1.0.13")
+  compile("org.apache.struts:struts2-core:2.3.15.3")
+  compile("org.apache.struts:struts2-spring-plugin:2.3.15.3")
+  compile("org.hibernate:hibernate-core:3.6.1.Final")
+  compile("org.springframework:spring-orm:3.0.5.RELEASE")
+  compile("org.springframework:spring-aop:3.0.5.RELEASE")
+  compile("net.sf.json-lib:json-lib:2.4:jdk15")
+  compile("org.apache.commons:commons-lang3:3.1")
+  compile("commons-httpclient:commons-httpclient:3.1")
+  compile("commons-dbcp:commons-dbcp:1.4")
+  compile("commons-pool:commons-pool:1.6")
+  compile("mysql:mysql-connector-java:5.1.27")
+  compile("jstl:jstl:1.2")
+  compile("org.apache.poi:poi-ooxml:3.9")
+  compile("org.aspectj:aspectjweaver:1.7.4")
+  compile("com.github.axet:kaptcha:0.0.9")
+  testCompile("junit:junit:4.11")
+  compile("org.apache.tomcat:servlet-api:6.0.37")
+
+  testCompile "junit:junit:4.11" 
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://opt/data/maven/development")
+        }
+    }
+}

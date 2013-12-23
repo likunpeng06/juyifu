@@ -2,7 +2,7 @@ group = 'mixpay'
 version = '0.0.1'
 
 apply plugin: 'java'
-// apply plugin: 'war'
+apply plugin: 'war'
 apply plugin: 'maven'
 
 repositories {

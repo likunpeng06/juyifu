@@ -1,0 +1,6 @@
+repositories {
+    mavenCentral()
+    maven {
+        url "http://w1.linode.sujie.me:17051/nexus/content/repositories/releases/"
+    }
+}

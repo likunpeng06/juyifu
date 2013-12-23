@@ -1,0 +1,9 @@
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://w1.linode.sujie.me:17051/nexus/content/repositories/releases/"){
+                authentication(userName: "admin", password: "admin123")
+              }
+        }
+    }
+}

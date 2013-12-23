@@ -1,20 +1,12 @@
-group = 'mixpay'
-version = '0.0.1'
-
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'maven'
 
-repositories {
-  mavenCentral()
-  
-  maven {
-    url '/root/.m2/repository'
-  }  
-}
+apply from: '../build_scripts/setVersion.gradle'
+apply from: '../build_scripts/repositories.gradle'
 
 dependencies {
-  compile "mixpay:jyf_core:0.0.1+" 
+  compile "mixpay:jyf_core:0.0.2+" 
 
   compile "ch.qos.logback:logback-classic:1.0.13" 
   compile "org.hibernate:hibernate-core:3.6.1.Final" 
@@ -34,21 +26,5 @@ dependencies {
   testCompile "junit:junit:4.11" 
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main'
-        }
-        resources {
-            srcDir 'src/resources'
-        }
-    }
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file://opt/data/maven/development")
-        }
-    }
-}
+apply from: '../build_scripts/sourceSets.gradle'
+apply from: '../build_scripts/uploadArchives.gradle'

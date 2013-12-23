@@ -1,26 +1,9 @@
-/*
- * Gets the version name from the latest Git tag
- */
-def getVersionName = { ->
-    def stdout = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags'
-        standardOutput = stdout
-    }
-    return stdout.toString().trim()
-}
-
-
-group = 'mixpay'
-//version = '0.0.1'
-version = getVersionName()
-
 apply plugin: 'java'
 apply plugin: 'maven'
 
-repositories {
-    mavenCentral()
-}
+
+apply from: '../build_scripts/setVersion.gradle'
+apply from: '../build_scripts/repositories.gradle'
 
 dependencies {
   compile "org.slf4j:jcl-over-slf4j:1.7.5"
@@ -33,22 +16,7 @@ dependencies {
   testCompile "junit:junit:4.11"
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main'
-        }
-        resources {
-            srcDir 'src/resources'
-        }
-    }
-}
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file://opt/data/maven/development")
-        }
-    }
-}
+apply from: '../build_scripts/sourceSets.gradle'
+apply from: '../build_scripts/uploadArchives.gradle'
 

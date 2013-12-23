@@ -9,3 +9,11 @@
 .idea/workspace.xml
 out/
 target/
+
+# gradle ignore files
+.gradle/
+build/
+.build.gradle.swp
+*/build/
+*/.gradle/
+*/.build.gradle.swp

@@ -1,0 +1,54 @@
+/*
+ * Gets the version name from the latest Git tag
+ */
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+
+group = 'mixpay'
+//version = '0.0.1'
+version = getVersionName()
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile "org.slf4j:jcl-over-slf4j:1.7.5"
+  compile "ch.qos.logback:logback-classic:1.0.13"
+  compile "org.apache.commons:commons-lang3:3.1"
+  compile "commons-httpclient:commons-httpclient:3.1"
+  compile "org.apache.tomcat:servlet-api:6.0.37"
+  compile "org.hibernate:hibernate-core:3.6.1.Final"  
+
+  testCompile "junit:junit:4.11"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://opt/data/maven/development")
+        }
+    }
+}
+

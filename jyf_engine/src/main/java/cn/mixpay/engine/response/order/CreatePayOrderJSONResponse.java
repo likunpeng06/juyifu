@@ -2,10 +2,11 @@ package cn.mixpay.engine.response.order;
 
 import cn.mixpay.core.entity.order.PayOrder;
 import cn.mixpay.engine.response.AbstractResponse;
+import cn.mixpay.engine.signature.Signature;
+import cn.mixpay.engine.signature.impl.AlipaySignature;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,7 +48,19 @@ public class CreatePayOrderJSONResponse extends AbstractResponse<PayOrder, JSONO
         jsonObject.put(KEY_PRODUCT_NAME, payOrder.getProductName());
         jsonObject.put(KEY_EXTERNAL_EXT, payOrder.getExternalExt());
 
+        String sign = getSign(jsonObject);
+
         return jsonObject;
+    }
+
+    public String getSign(JSONObject order){
+
+        // TODO 统一改为注入接口自动匹配模式,一些内容废弃
+        if(order.get("KEY_PLATFORM").equals("alipay")){
+            Signature signature = new AlipaySignature();
+            return signature.sign(order);
+        }
+        return null;
     }
 
     protected JSONArray convertToJSONArray(List<PayOrder> payOrderList) {

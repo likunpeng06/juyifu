@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+       default-autowire="byName">
+
+    <bean id="payOrderCreateExecutor" class="cn.mixpay.engine.executor.pay.impl.PayOrderCreateExecutor" />
+    <bean id="payPlatformRequestExecutor" class="cn.mixpay.engine.executor.pay.impl.PayPlatformRequestExecutor" />
+
+    <bean id="onlyPayOrderCreateChain" class="cn.mixpay.engine.chain.pay.impl.CommonPayChain">
+        <property name="payExecutorList">
+            <list>
+                <ref bean="payOrderCreateExecutor"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="payOrderCreateAndRequestChain" class="cn.mixpay.engine.chain.pay.impl.CommonPayChain">
+        <property name="payExecutorList">
+            <list>
+                <ref bean="payOrderCreateExecutor"/>
+                <ref bean="payPlatformRequestExecutor"/>
+            </list>
+        </property>
+    </bean>
+
+    <util:map id="payTypeChainMap" key-type="cn.mixpay.core.type.PayType"  value-type="cn.mixpay.engine.chain.pay.IPayChain">
+        <entry key="ALIPAY_BALANCE" value-ref="onlyPayOrderCreateChain"/>
+        <entry key="PHONE_PRE_PAID_CARD" value-ref="payOrderCreateAndRequestChain"/>
+    </util:map>
+</beans>

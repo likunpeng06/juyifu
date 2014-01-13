@@ -18,6 +18,7 @@ public class PayOrderForm extends AbstractForm {
     private String externalExt;
     private String osTypeValue;
     private String osVersion;
+    private String remoteIp;
 
     public String getMerchantAppId() {
         return merchantAppId;
@@ -113,5 +114,13 @@ public class PayOrderForm extends AbstractForm {
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getRemoteIp() {
+        return remoteIp;
+    }
+
+    public void setRemoteIp(String remoteIp) {
+        this.remoteIp = remoteIp;
     }
 }

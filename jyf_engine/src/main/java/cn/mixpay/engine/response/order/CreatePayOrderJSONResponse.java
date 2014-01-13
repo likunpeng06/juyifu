@@ -54,9 +54,8 @@ public class CreatePayOrderJSONResponse extends AbstractResponse<PayOrder, JSONO
     }
 
     public String getSign(JSONObject order){
-
         // TODO 统一改为注入接口自动匹配模式,一些内容废弃
-        if(order.get("KEY_PLATFORM").equals("alipay")){
+        if(order.getString(KEY_PLATFORM).equals("alipay")){
             Signature signature = new AlipaySignature();
             return signature.sign(order);
         }

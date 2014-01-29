@@ -5,7 +5,7 @@ import net.sf.json.JSONObject;
 /**
  * User: leiming
  */
-public interface SignService {
+public interface ISignService {
 
     public String sign(JSONObject jsonData);
 }

@@ -40,6 +40,7 @@ public abstract class AbstractResponse<K, V> implements IResponse<K, V> {
         return null;
     }
 
+    @Override
     public int getCode() {
         return code;
     }
@@ -49,6 +50,7 @@ public abstract class AbstractResponse<K, V> implements IResponse<K, V> {
         this.code = code;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }

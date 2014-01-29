@@ -1,7 +1,6 @@
 package cn.mixpay.engine.response;
 
 import cn.mixpay.core.type.OutputType;
-import net.sf.json.JSONObject;
 
 /**
  * 返回数据对象
@@ -44,4 +43,8 @@ public interface IResponse<K, V> {
      * @return
      */
     public String output(OutputType outputType);
+
+    public int getCode();
+
+    public String getMessage();
 }

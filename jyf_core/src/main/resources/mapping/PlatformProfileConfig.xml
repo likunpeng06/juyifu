@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.mixpay.core.entity.config">
+    <class name="PlatformProfileConfig" table="mp_platform_profile_config" dynamic-insert="true" dynamic-update="true">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="platformType">
+            <column name="platform_type" precision="4" scale="0" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">
+                    cn.mixpay.core.type.PlatformType
+                </param>
+            </type>
+        </property>
+        <property name="account" column="account" not-null="true"/>
+        <property name="partner" column="partner" />
+        <property name="publicKey" column="publicKey" length="2000"/>
+        <property name="privateKey" column="privateKey" length="2000"/>
+        <property name="serviceUrl" column="serviceUrl" />
+        <property name="notifyUrl" column="notifyUrl" />
+        <property name="returnUrl" column="returnUrl" />
+        <property name="ext" column="ext" />
+    </class>
+</hibernate-mapping>

@@ -39,4 +39,7 @@
     <bean id="idGeneratorService" class="cn.mixpay.engine.generator.impl.generator.IdGeneratorServiceImpl"/>
     <bean id="payOrderService" class="cn.mixpay.engine.service.impl.order.PayOrderServiceImpl"/>
 
+    <bean id="signService" class="cn.mixpay.engine.service.impl.sign.SignServiceImpl"/>
+    <bean id="platformProfileConfigService" class="cn.mixpay.engine.service.impl.config.PlatformProfileConfigServiceImpl"/>
+
 </beans>

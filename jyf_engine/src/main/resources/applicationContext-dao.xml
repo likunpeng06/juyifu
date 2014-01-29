@@ -23,6 +23,7 @@
             <list>
                 <value>mapping/IdGenerator.xml</value>
                 <value>mapping/PayOrder.xml</value>
+                <value>mapping/PlatformProfileConfig.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -37,5 +38,7 @@
 
     <bean id="idGeneratorDao" class="cn.mixpay.engine.dao.impl.generator.IdGeneratorDaoImpl"/>
     <bean id="payOrderDao" class="cn.mixpay.engine.dao.impl.order.PayOrderDaoImpl"/>
+
+    <bean id="platformProfileConfigDao" class="cn.mixpay.engine.dao.impl.config.PlatformProfileConfigDaoImpl"/>
 
 </beans>
